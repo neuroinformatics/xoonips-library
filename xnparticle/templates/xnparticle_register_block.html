@@ -55,7 +55,7 @@
 		<input type='hidden' name='sub_title_romaji' value='<{$detail.sub_title_romaji|escape|replace:"&amp;#":"&#"}>' />
   	     </td>
 	  </tr>
-<{if !empty( $detail.sub_title_str.value ) }>
+<{if !empty( $detail.sub_title_str ) }>
 	  <tr>
 	    <td></td>
 	    <td class="<{cycle name="oddeven"}>"><{$detail.sub_title_str|replace:"&amp;#":"&#"}>
@@ -122,7 +122,7 @@
 		<input type='hidden' name='author_link' value='<{$detail.author_link|escape|replace:"&amp;#":"&#"}>' />
   	     </td>
 	  </tr>
-<{if !empty( $detail.author_str.value ) }>
+<{if !empty( $detail.author_str ) }>
 	  <tr>
 	    <td></td>
 	    <td class="<{cycle name="oddeven"}>"><{$detail.author_str|replace:"&amp;#":"&#"}>
@@ -201,7 +201,7 @@
 		<input type='hidden' name='physical_descriptions_str' value='<{$detail.physical_descriptions_str|escape|replace:"&amp;#":"&#"}>' />
 	   </td>
 	  </tr>
-<{if !empty( $detail.physical_description_str.value ) }>
+<{if !empty( $detail.physical_description_str ) }>
 	  <tr>
 	    <td><{$detail.physical_description_str|replace:"&amp;#":"&#"}>
 		<input type='hidden' name='xnparticleUpdatePhysicalDescriptionFlag' value='' />
@@ -282,7 +282,7 @@
 		  <input type='hidden' name='id_issns_str' value='<{$detail.id_issns_str|escape|replace:"&amp;#":"&#"}>' />
 	        </td>
 	      </tr>
-              <{if !empty( $detail.id_issn_str.value ) }>
+              <{if !empty( $detail.id_issn_str ) }>
 	      <tr>
 	        <td><{$detail.id_issn_str|replace:"&amp;#":"&#"}>
 		  <input type='hidden' name='xnparticleUpdateIdIssnFlag' value='' />
@@ -306,7 +306,7 @@
 		  <input type='hidden' name='id_isbns_str' value='<{$detail.id_isbns_str|escape|replace:"&amp;#":"&#"}>' />
 	        </td>
 	      </tr>
-              <{if !empty( $detail.id_isbn_str.value ) }>
+              <{if !empty( $detail.id_isbn_str ) }>
 	      <tr>
 	        <td><{$detail.id_isbn_str|replace:"&amp;#":"&#"}>
 	          <input type='hidden' name='xnparticleUpdateIdIsbnFlag' value='' />
@@ -330,7 +330,7 @@
 		  <input type='hidden' name='id_dois_str' value='<{$detail.id_dois_str|escape|replace:"&amp;#":"&#"}>' />
 	        </td>
 	      </tr>
-              <{if !empty( $detail.id_doi_str.value ) }>
+              <{if !empty( $detail.id_doi_str ) }>
 	      <tr>
 	        <td><{$detail.id_doi_str|replace:"&amp;#":"&#"}>
 	          <input type='hidden' name='xnparticleUpdateIdDoiFlag' value='' />
@@ -354,7 +354,7 @@
 		  <input type='hidden' name='id_uris_str' value='<{$detail.id_uris_str|escape|replace:"&amp;#":"&#"}>' />
 	        </td>
 	      </tr>
-              <{if !empty( $detail.id_uri_str.value ) }>
+              <{if !empty( $detail.id_uri_str ) }>
 	      <tr>
 	        <td><{$detail.id_uri_str|replace:"&amp;#":"&#"}>
 	          <input type='hidden' name='xnparticleUpdateIdUriFlag' value='' />
@@ -414,7 +414,7 @@
 	          <input type='hidden' name='id_locals_str' value='<{$detail.id_locals_str|escape|replace:"&amp;#":"&#"}>' />
 	        </td>
 	      </tr>
-              <{if !empty( $detail.id_local_str.value ) }>
+              <{if !empty( $detail.id_local_str ) }>
 	      <tr>
 	        <td><{$detail.id_local_str|replace:"&amp;#":"&#"}>
 	          <input type='hidden' name='xnparticleUpdateIdLocalFlag' value='' />
@@ -472,7 +472,7 @@
 		<input type='hidden' name='keywords_str' value='<{$detail.keywords_str|escape|replace:"&amp;#":"&#"}>' />
 	   </td>
 	  </tr>
-<{if !empty( $detail.keyword_str.value ) }>
+<{if !empty( $detail.keyword_str ) }>
 	  <tr>
 	    <td><{$detail.keyword_str|replace:"&amp;#":"&#"}>
 		<input type='hidden' name='xnparticleUpdateKeywordFlag' value='' />
@@ -496,7 +496,7 @@
 		<input type='hidden' name='ndc_classifications_str' value='<{$detail.ndc_classifications_str|escape|replace:"&amp;#":"&#"}>' />
 	   </td>
 	  </tr>
-<{if !empty( $detail.ndc_classification_str.value ) }>
+<{if !empty( $detail.ndc_classification_str ) }>
 	  <tr>
 	    <td><{$detail.ndc_classification_str|replace:"&amp;#":"&#"}>
 		<input type='hidden' name='xnparticleUpdateNdcClassificationFlag' value='' />
@@ -524,7 +524,7 @@
 		<input type='hidden' name='langs_str' value='<{$detail.langs_str|escape|replace:"&amp;#":"&#"}>' />
 	   </td>
 	  </tr>
-<{if !empty( $detail.lang_str.value ) }>
+<{if !empty( $detail.lang_str ) }>
 	  <tr>
 	    <td><{$detail.lang_str|replace:"&amp;#":"&#"}>
 		<input type='hidden' name='xnparticleUpdateLangFlag' value='' />
@@ -570,7 +570,7 @@
 		  <input type='hidden' name='uris_str' value='<{$detail.uris_str|escape|replace:"&amp;#":"&#"}>' />
 	        </td>
 	      </tr>
-              <{if !empty( $detail.uri_str.value ) }>
+              <{if !empty( $detail.uri_str ) }>
 	      <tr>
 	        <td><{$detail.uri_str|replace:"&amp;#":"&#"}>
 	          <input type='hidden' name='xnparticleUpdateUriFlag' value='' />

@@ -54,7 +54,7 @@ function xnparticleDetailSubTitleString( $detail, $item_id ) {
 		$i++;
 	}
 	$detail['sub_title_str'] .= "</table>";
-	$detail['sub_title_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+	$detail['sub_title_cnt'] = strval(fmod($i, 2));
 	if ($i == 0) {
 		$detail['sub_title_str'] = "";
 	}
@@ -99,7 +99,7 @@ function xnparticleDetailAuthorString( $detail, $item_id ) {
                 $authors_raw_data[]=$author_raw_data;
 	}
 	$detail['author_str'] .= "</table>";
-	$detail['author_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+	$detail['author_cnt'] = strval(fmod($i, 2));
 	if (isset($authors_raw_data)) {	//2009.02.09 add
         //2008.07.18 igarashi add
         $detail['authors_raw_data']=$authors_raw_data;
@@ -120,7 +120,7 @@ function xnparticleDetailKeywordsString( $detail, $item_id ) {
 		$i++;
 	}
 	$detail['keyword_str'] .= "</table>";
-	$detail['keywords_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+	$detail['keywords_cnt'] = strval(fmod($i, 2));
 	if ($i == 0) {
 		$detail['keyword_str'] = "";
 	}
@@ -136,7 +136,7 @@ function xnparticleDetailNdcClassificationsString( $detail, $item_id ) {
 		$i++;
 	}
 	$detail['ndc_classification_str'] .= "</table>";
-	$detail['ndc_classifications_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+	$detail['ndc_classifications_cnt'] = strval(fmod($i, 2));
 	if ($i == 0) {
 		$detail['ndc_classification_str'] = "";
 	}
@@ -152,7 +152,7 @@ function xnparticleDetailPhysicalDescriptionsString( $detail, $item_id ) {
                 $i++;
         }
         $detail['physical_description_str'] .= "</table>";
-        $detail['physical_descriptions_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+        $detail['physical_descriptions_cnt'] = strval(fmod($i, 2));
         if ($i == 0) {
                 $detail['physical_description_str'] = "";
         }
@@ -168,7 +168,7 @@ function xnparticleDetailLangsString( $detail, $item_id ) {
                 $i++;
         }
         $detail['lang_str'] .= "</table>";
-        $detail['langs_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+        $detail['langs_cnt'] = strval(fmod($i, 2));
         if ($i == 0) {
                 $detail['lang_str'] = "";
         }
@@ -185,7 +185,7 @@ function xnparticleDetailIdIssnsString( $detail, $item_id ) {
                 if(empty($id_issns))$i--;
         }
         $detail['id_issn_str'] .= "</table>";
-        $detail['id_issns_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+        $detail['id_issns_cnt'] = strval(fmod($i, 2));
         if ($i == 0) {
                 $detail['id_issn_str'] = "";
         }
@@ -202,7 +202,7 @@ function xnparticleDetailIdIsbnsString( $detail, $item_id ) {
                 if(empty($id_isbns))$i--;
         }
         $detail['id_isbn_str'] .= "</table>";
-        $detail['id_isbns_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+        $detail['id_isbns_cnt'] = strval(fmod($i, 2));
         if ($i == 0) {
                 $detail['id_isbn_str'] = "";
         }
@@ -219,7 +219,7 @@ function xnparticleDetailIdDoisString( $detail, $item_id ) {
                 if(empty($id_dois))$i--;
         }
         $detail['id_doi_str'] .= "</table>";
-        $detail['id_dois_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+        $detail['id_dois_cnt'] = strval(fmod($i, 2));
         if ($i == 0) {
                 $detail['id_doi_str'] = "";
         }
@@ -246,7 +246,7 @@ function xnparticleDetailIdUrisString( $detail, $item_id ) {
                 if(empty($id_uris))$i--;
         }
         $detail['id_uri_str'] .= "</table>";
-        $detail['id_uris_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+        $detail['id_uris_cnt'] = strval(fmod($i, 2));
         if ($i == 0) {
                 $detail['id_uri_str'] = "";
         }
@@ -273,7 +273,7 @@ function xnparticleDetailIdLocalsString( $detail, $item_id ) {
                 if(empty($id_locals))$i--;
         }
         $detail['id_local_str'] .= "</table>";
-        $detail['id_locals_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+        $detail['id_locals_cnt'] = strval(fmod($i, 2));
         if ($i == 0) {
                 $detail['id_local_str'] = "";
         }
@@ -290,7 +290,7 @@ function xnparticleDetailUrisString( $detail, $item_id ) {
                 if(empty($uris))$i--;
         }
         $detail['uri_str'] .= "</table>";
-        $detail['uris_cnt'] = array( 'value' => strval(fmod($i, 2)) );
+        $detail['uris_cnt'] = strval(fmod($i, 2));
         if ($i == 0) {
                 $detail['uri_str'] = "";
         }
@@ -1735,8 +1735,7 @@ function xnparticleGetDetailInformation( $item_id ){
 	$sql = "select * from " . $xoopsDB->prefix("xnparticle_item_detail") . " where article_id=$item_id";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail = $xoopsDB->fetchArray($result);
 	return $detail;
@@ -1754,7 +1753,7 @@ function xnparticleGetDetailChildSubTitleInformation( $item_id ){
 	$sql = "select article_child_sub_title_id,article_id,sub_title_name,sub_title_kana,sub_title_romaji,sub_title_order from " . $xoopsDB->prefix("xnparticle_item_detail_child_sub_title") . " where article_id=$item_id order by sub_title_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
+        xoonips_error_exit(500);
 		return false;
 	}
 	$detail_child_sub_title = array();
@@ -1781,8 +1780,7 @@ function xnparticleGetDetailChildAuthorInformation( $item_id ){
 	$sql = "select article_child_author_id,article_id,author_id,author_name,author_kana,author_romaji,author_affiliation,author_affiliation_translation,author_role,author_link,author_order from " . $xoopsDB->prefix("xnparticle_item_detail_child_author") . " where article_id=$item_id order by author_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail_child_author = array();
 	while ( false != ( $row = $xoopsDB->fetchRow($result) ) ) {
@@ -1801,8 +1799,7 @@ function xnparticleGetDetailChildKeywordsInformation( $item_id ){
 	$sql = "select * from " . $xoopsDB->prefix("xnparticle_item_detail_child_keywords") . " where article_id=$item_id order by keywords_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail_child_keywords = array();
 	while ( false != ( $row = $xoopsDB->fetchRow($result) ) ) {
@@ -1821,8 +1818,7 @@ function xnparticleGetDetailChildNdcClassificationsInformation( $item_id ){
 	$sql = "select * from " . $xoopsDB->prefix("xnparticle_item_detail_child_ndc_classifications") . " where article_id=$item_id order by ndc_classifications_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail_child_ndc_classifications = array();
 	while ( false != ( $row = $xoopsDB->fetchRow($result) ) ) {
@@ -1841,8 +1837,7 @@ function xnparticleGetDetailChildPhysicalDescriptionsInformation( $item_id ){
 	$sql = "select * from " . $xoopsDB->prefix("xnparticle_item_detail_child_physical_descriptions") . " where article_id=$item_id order by physical_descriptions_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail_child_physical_descriptions = array();
 	while ( false != ( $row = $xoopsDB->fetchRow($result) ) ) {
@@ -1861,8 +1856,7 @@ function xnparticleGetDetailChildLangsInformation( $item_id ){
 	$sql = "select * from " . $xoopsDB->prefix("xnparticle_item_detail_child_langs") . " where article_id=$item_id order by langs_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail_child_langs = array();
 	while ( false != ( $row = $xoopsDB->fetchRow($result) ) ) {
@@ -1881,8 +1875,7 @@ function xnparticleGetDetailChildIdIssnsInformation( $item_id ){
 	$sql = "select * from " . $xoopsDB->prefix("xnparticle_item_detail_child_id_issns") . " where article_id=$item_id order by id_issns_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail_child_id_issns = array();
 	while ( false != ( $row = $xoopsDB->fetchRow($result) ) ) {
@@ -1901,8 +1894,7 @@ function xnparticleGetDetailChildIdIsbnsInformation( $item_id ){
 	$sql = "select * from " . $xoopsDB->prefix("xnparticle_item_detail_child_id_isbns") . " where article_id=$item_id order by id_isbns_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail_child_id_isbns = array();
 	while ( false != ( $row = $xoopsDB->fetchRow($result) ) ) {
@@ -1921,8 +1913,7 @@ function xnparticleGetDetailChildIdDoisInformation( $item_id ){
 	$sql = "select * from " . $xoopsDB->prefix("xnparticle_item_detail_child_id_dois") . " where article_id=$item_id order by id_dois_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail_child_id_dois = array();
 	while ( false != ( $row = $xoopsDB->fetchRow($result) ) ) {
@@ -1941,8 +1932,7 @@ function xnparticleGetDetailChildIdUrisInformation( $item_id ){
 	$sql = "select * from " . $xoopsDB->prefix("xnparticle_item_detail_child_id_uris") . " where article_id=$item_id order by id_uris_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail_child_id_uris = array();
 	while ( false != ( $row = $xoopsDB->fetchRow($result) ) ) {
@@ -1961,8 +1951,7 @@ function xnparticleGetDetailChildIdLocalsInformation( $item_id ){
 	$sql = "select * from " . $xoopsDB->prefix("xnparticle_item_detail_child_id_locals") . " where article_id=$item_id order by id_locals_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail_child_id_locals = array();
 	while ( false != ( $row = $xoopsDB->fetchRow($result) ) ) {
@@ -1981,8 +1970,7 @@ function xnparticleGetDetailChildUrisInformation( $item_id ){
 	$sql = "select * from " . $xoopsDB->prefix("xnparticle_item_detail_child_uris") . " where article_id=$item_id order by uris_order";
 	$result = $xoopsDB->query( $sql );
 	if ( $result == FALSE ){
-		echo " $sql " . mysql_error();
-		return false;
+        xoonips_error_exit(500);
 	}
 	$detail_child_uris = array();
 	while ( false != ( $row = $xoopsDB->fetchRow($result) ) ) {
@@ -3188,8 +3176,7 @@ function xnparticleInsertItem(){
   }
   // Registration of the DetailInformation
   if ( ! $detail_handler->insert( $detail_obj ) ) {
-    echo "cannot insert item_detail";
-    return false;
+    xoonips_error_exit(500);
   }
 
   if ( ( ! empty( $detail['sub_title_name'] ) ) || ( ! empty( $detail['sub_title_kana'] ) ) || ( ! empty( $detail['sub_title_romaji'] ) ) ) {
@@ -3212,8 +3199,7 @@ function xnparticleInsertItem(){
       $sub_title_obj->set( 'sub_title_order', $num );
       // Registration of the DetailInformation Child Sub Title
       if ( ! $sub_title_handler->insert( $sub_title_obj ) ) {
-        echo "cannot insert item_detail_child_sub_title";
-        return false;
+        xoonips_error_exit(500);
       }
     }
   }
@@ -3252,8 +3238,7 @@ function xnparticleInsertItem(){
       $author_obj->set( 'author_order', $num );
       // Registration of the DetailInformation Child Author
       if ( ! $author_handler->insert( $author_obj ) ) {
-        echo "cannot insert item_detail_child_author";
-        return false;
+        xoonips_error_exit(500);
       }
     }
   }
@@ -3285,8 +3270,7 @@ function xnparticleInsertItem(){
         $obj->set( $key.'_order', $num );
         // Registration of the DetailInformation Child $key
         if ( ! $handler->insert( $obj ) ) {
-          echo "cannot insert item_detail_child_".$key;
-          return false;
+          xoonips_error_exit(500);
         }
       }
     }
@@ -3316,19 +3300,19 @@ function xnparticleUpdateItem( $item_id ){
           $result = xnp_insert_change_log( $xnpsid, $item_id, $formdata->getValue( 'post', 'change_log', 's', false, '' ) );
           $result = !$result;
           if( !$result ) {
-            echo " xnp_insert_change_log failed.";
+            xoonips_error_exit(500);
           }
         } else {
-          echo " xnpUpdateAttachment failed.";
+          xoonips_error_exit(500);
         }
       } else {
-        echo " xnpUpdatePreview failed.";
+        xoonips_error_exit(500);
       }
     } else {
-      echo " xnpUpdateIndex failed.";
+      xoonips_error_exit(500);
     }
   } else {
-    echo " xnpUpdateBasicInformation failed.";
+    xoonips_error_exit(500);
   }
   if ( !$result ) {
     return false;
@@ -3395,8 +3379,7 @@ function xnparticleUpdateItem( $item_id ){
   }
   // Registration of the DetailInformation
   if ( ! $detail_handler->insert( $detail_obj ) ) {
-    echo "cannot update item_detail";
-    return false;
+    xoonips_error_exit(500);
   }
 
   $criteria = new Criteria( 'article_id', $item_id );
@@ -3435,8 +3418,7 @@ function xnparticleUpdateItem( $item_id ){
       $sub_title_obj->set( 'sub_title_order', $i );
       // Registration of the DetailInformation Child Sub Title
       if ( ! $sub_title_handler->insert( $sub_title_obj ) ) {
-        echo "cannot insert item_detail_child_sub_title";
-        return false;
+        xoonips_error_exit(500);
       }
     }
   } else {
@@ -3495,8 +3477,7 @@ function xnparticleUpdateItem( $item_id ){
       $author_obj->set( 'author_order', $i );
       // Registration of the DetailInformation Child Author
       if ( ! $author_handler->insert( $author_obj ) ) {
-        echo "cannot insert item_detail_child_author";
-        return false;
+        xoonips_error_exit(500);
       }
     }
   } else {
@@ -3549,9 +3530,7 @@ function xnparticleUpdateItem( $item_id ){
         $obj->set( $key.'_order', $i );
         // Registration of the DetailInformation Child $key
         if ( ! $handler->insert( $obj ) ) {
-          var_dump( $obj ); exit();
-          echo "cannot insert item_detail_child_".$key;
-          return false;
+          xoonips_error_exit(500);
         }
       }
     } else {

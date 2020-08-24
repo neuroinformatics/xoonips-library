@@ -31,8 +31,6 @@ function xoops_module_uninstall_xnparticle( $xoopsMod ) {
 	if ( $result ){ 
 		list($item_type_id) = $xoopsDB->fetchRow($result); 
 	}else{ 
-		echo mysql_error(); 
-		echo $sql; 
 		return false; 
 	} 
     
@@ -41,8 +39,6 @@ function xoops_module_uninstall_xnparticle( $xoopsMod ) {
 	$sql = "SELECT item_id from ${table} WHERE item_type_id = $item_type_id"; 
 	$result = $xoopsDB->query($sql); 
 	if ( !$result ){ 
-		echo mysql_error(); 
-		echo $sql; 
 		return false; 
 	} 
 	$ids = array( ); 
@@ -53,8 +49,6 @@ function xoops_module_uninstall_xnparticle( $xoopsMod ) {
 		$table = $xoopsDB->prefix('xoonips_item_status'); 
 		$sql = "UPDATE ${table} SET deleted_timestamp=UNIX_TIMESTAMP(NOW()), is_deleted=1 WHERE item_id in ( ".implode( ",", $ids ).")"; 
 		if ( $xoopsDB->query($sql) == FALSE ){ 
-			echo mysql_error(); 
-			echo $sql; 
 			return false; 
 		} 
 	} 
@@ -63,8 +57,6 @@ function xoops_module_uninstall_xnparticle( $xoopsMod ) {
 	$table = $xoopsDB->prefix('xoonips_item_basic'); 
 	$sql = "DELETE FROM $table where item_type_id = $item_type_id"; 
 	if ( $xoopsDB->query($sql) == FALSE ){ 
-		echo mysql_error(); 
-		echo $sql; 
 		return false; 
 	} 
     

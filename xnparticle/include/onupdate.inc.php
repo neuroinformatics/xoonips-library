@@ -69,7 +69,7 @@ function xoops_module_update_xnparticle ( $xoopsMod, $oldversion) {
 			$sql = "ALTER TABLE " . $xoopsDB->prefix( $table ) . " TYPE = innodb";
 			$result = $xoopsDB->query( $sql );
 			if( !$result ){
-				echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+				echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.00";
 			}
 		}
 	
@@ -80,22 +80,22 @@ function xoops_module_update_xnparticle ( $xoopsMod, $oldversion) {
                 $sql = "alter table " . $xoopsDB->prefix( "xnparticle_item_detail" ) . " modify year_f varchar(50), modify year_t varchar(50), modify date_create varchar(50), modify date_update varchar(50), modify date_record varchar(50)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.10 - (1)";
 		}
                 $sql = "alter table " . $xoopsDB->prefix( "xnparticle_item_detail_child_physical_descriptions" ) . " modify physical_descriptions varchar(1000)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.10 - (2)";
 		}
                 $sql = "alter table " . $xoopsDB->prefix( "xnparticle_item_detail_child_id_uris" ) . " modify id_uris varchar(1000)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.10 - (3)";
 		}
                 $sql = "alter table " . $xoopsDB->prefix( "xnparticle_item_detail_child_uris" ) . " modify uris varchar(1000)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.10 - (4)";
 		}
 	case 120:
 	case 130:
@@ -105,62 +105,62 @@ function xoops_module_update_xnparticle ( $xoopsMod, $oldversion) {
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_sub_title" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (1)";
 		}
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_author" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (2)";
 		}
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_keywords" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (3)";
 		}
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_ndc_classifications" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (4)";
 		}
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_physical_descriptions" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (5)";
 		}
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_langs" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (6)";
 		}
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_id_isbns" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (7)";
 		}
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_id_issns" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (8)";
 		}
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_id_dois" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (9)";
 		}
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_id_uris" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (10)";
 		}
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_id_locals" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (11)";
 		}
                 $sql = "create index idx_article_id on " . $xoopsDB->prefix( "xnparticle_item_detail_child_uris" ) . " (article_id)";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.20 or 1.30 - (12)";
 		}
 
 	case 131:
@@ -171,7 +171,7 @@ function xoops_module_update_xnparticle ( $xoopsMod, $oldversion) {
 		$sql = "ALTER TABLE " .$xoopsDB->prefix( "xnparticle_item_detail" ) . " ADD (self_doi text, naid text, ichushi text, textversion text, grant_id text, date_of_granted text, degree_name text, grantor text);";
 		$result = $xoopsDB->query( $sql );
 		if( !$result ){
-			echo "ERROR: line=" . __LINE__ . " sql=$sql " .$xoopsDB->error();
+			echo "ERROR: line=" . __LINE__ . " Failed to modify table structure from version 1.31 or 1.40";
 		}
 
 	case 150:

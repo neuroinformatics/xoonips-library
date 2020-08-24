@@ -58,7 +58,7 @@
               <{foreach from=$detail.uri_raw_str item="raw_uri"}>
                 <a href="<{$raw_uri}>"><{$raw_uri}></a><br>
               <{/foreach}>
-              <{if ($detail.uris_cnt.value == "0") }>
+              <{if ($detail.uris_cnt == "0") }>
               <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
               <{/if}>
             </td></tr></table>
@@ -91,7 +91,7 @@
     <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
     <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
     <td class="<{cycle name="oddeven"}>"><{$detail.sub_title_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
-<{if ($detail.sub_title_cnt.value == "0") }>
+<{if ($detail.sub_title_cnt == "0") }>
     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
 <{/if}>
   </tr>
@@ -127,7 +127,7 @@
           </table>
         <{/section}>
     </td>
-<{if ($detail.author_cnt.value == "0") }>
+<{if ($detail.author_cnt == "0") }>
     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
 <{/if}>
   </tr>
@@ -183,7 +183,7 @@
     <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
     <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
 	<td class="<{cycle name="oddeven"}>"><{$detail.physical_description_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
-<{if ($detail.physical_descriptions_cnt.value == "0") }>
+<{if ($detail.physical_descriptions_cnt == "0") }>
      <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
 <{/if}>
   </tr>
@@ -340,7 +340,7 @@
     <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
     <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
 	<td class="<{cycle name="oddeven"}>"><{$detail.keyword_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
-<{if ($detail.keywords_cnt.value == "0") }>
+<{if ($detail.keywords_cnt == "0") }>
      <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
 <{/if}>
   </tr>
@@ -351,7 +351,7 @@
     <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
     <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
 	<td class="<{cycle name="oddeven"}>"><{$detail.ndc_classification_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
-<{if ($detail.ndc_classifications_cnt.value == "0") }>
+<{if ($detail.ndc_classifications_cnt == "0") }>
      <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
 <{/if}>
   </tr>
@@ -368,7 +368,7 @@
     <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
     <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
 	<td class="<{cycle name="oddeven"}>"><{$detail.lang_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
-<{if ($detail.langs_cnt.value == "0") }>
+<{if ($detail.langs_cnt == "0") }>
      <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
 <{/if}>
   </tr>

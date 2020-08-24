@@ -70,3 +70,9 @@ function xnparticleCreateModsXml(
     return $rtn;
 }
 
+if (!function_exists('xoonips_error_exit')) {
+    function xoonips_error_exit($code) {
+        exit('Fatal Error: '.$code);
+    }
+}
+
