@@ -54,7 +54,7 @@ function xnparticleDetailSubTitleString( $detail, $item_id ) {
 		$i++;
 	}
 	$detail['sub_title_str'] .= "</table>";
-	$detail['sub_title_cnt'] = strval(fmod($i, 2));
+	$detail['sub_title_cnt'] = array( 'value' => strval(fmod($i, 2)) );
 	if ($i == 0) {
 		$detail['sub_title_str'] = "";
 	}
@@ -99,7 +99,7 @@ function xnparticleDetailAuthorString( $detail, $item_id ) {
                 $authors_raw_data[]=$author_raw_data;
 	}
 	$detail['author_str'] .= "</table>";
-	$detail['author_cnt'] = strval(fmod($i, 2));
+	$detail['author_cnt'] = array( 'value' => strval(fmod($i, 2)) );
 	if (isset($authors_raw_data)) {	//2009.02.09 add
         //2008.07.18 igarashi add
         $detail['authors_raw_data']=$authors_raw_data;
@@ -120,7 +120,7 @@ function xnparticleDetailKeywordsString( $detail, $item_id ) {
 		$i++;
 	}
 	$detail['keyword_str'] .= "</table>";
-	$detail['keywords_cnt'] = strval(fmod($i, 2));
+	$detail['keywords_cnt'] = array( 'value' => strval(fmod($i, 2)) );
 	if ($i == 0) {
 		$detail['keyword_str'] = "";
 	}
@@ -136,7 +136,7 @@ function xnparticleDetailNdcClassificationsString( $detail, $item_id ) {
 		$i++;
 	}
 	$detail['ndc_classification_str'] .= "</table>";
-	$detail['ndc_classifications_cnt'] = strval(fmod($i, 2));
+	$detail['ndc_classifications_cnt'] = array( 'value' => strval(fmod($i, 2)) );
 	if ($i == 0) {
 		$detail['ndc_classification_str'] = "";
 	}
@@ -152,7 +152,7 @@ function xnparticleDetailPhysicalDescriptionsString( $detail, $item_id ) {
                 $i++;
         }
         $detail['physical_description_str'] .= "</table>";
-        $detail['physical_descriptions_cnt'] = strval(fmod($i, 2));
+        $detail['physical_descriptions_cnt'] = array( 'value' => strval(fmod($i, 2)) );
         if ($i == 0) {
                 $detail['physical_description_str'] = "";
         }
@@ -168,7 +168,7 @@ function xnparticleDetailLangsString( $detail, $item_id ) {
                 $i++;
         }
         $detail['lang_str'] .= "</table>";
-        $detail['langs_cnt'] = strval(fmod($i, 2));
+        $detail['langs_cnt'] = array( 'value' => strval(fmod($i, 2)) );
         if ($i == 0) {
                 $detail['lang_str'] = "";
         }
@@ -185,7 +185,7 @@ function xnparticleDetailIdIssnsString( $detail, $item_id ) {
                 if(empty($id_issns))$i--;
         }
         $detail['id_issn_str'] .= "</table>";
-        $detail['id_issns_cnt'] = strval(fmod($i, 2));
+        $detail['id_issns_cnt'] = array( 'value' => strval(fmod($i, 2)) );
         if ($i == 0) {
                 $detail['id_issn_str'] = "";
         }
@@ -202,7 +202,7 @@ function xnparticleDetailIdIsbnsString( $detail, $item_id ) {
                 if(empty($id_isbns))$i--;
         }
         $detail['id_isbn_str'] .= "</table>";
-        $detail['id_isbns_cnt'] = strval(fmod($i, 2));
+        $detail['id_isbns_cnt'] = array( 'value' => strval(fmod($i, 2)) );
         if ($i == 0) {
                 $detail['id_isbn_str'] = "";
         }
@@ -219,7 +219,7 @@ function xnparticleDetailIdDoisString( $detail, $item_id ) {
                 if(empty($id_dois))$i--;
         }
         $detail['id_doi_str'] .= "</table>";
-        $detail['id_dois_cnt'] = strval(fmod($i, 2));
+        $detail['id_dois_cnt'] = array( 'value' => strval(fmod($i, 2)) );
         if ($i == 0) {
                 $detail['id_doi_str'] = "";
         }
@@ -246,7 +246,7 @@ function xnparticleDetailIdUrisString( $detail, $item_id ) {
                 if(empty($id_uris))$i--;
         }
         $detail['id_uri_str'] .= "</table>";
-        $detail['id_uris_cnt'] = strval(fmod($i, 2));
+        $detail['id_uris_cnt'] = array( 'value' => strval(fmod($i, 2)) );
         if ($i == 0) {
                 $detail['id_uri_str'] = "";
         }
@@ -273,7 +273,7 @@ function xnparticleDetailIdLocalsString( $detail, $item_id ) {
                 if(empty($id_locals))$i--;
         }
         $detail['id_local_str'] .= "</table>";
-        $detail['id_locals_cnt'] = strval(fmod($i, 2));
+        $detail['id_locals_cnt'] = array( 'value' => strval(fmod($i, 2)) );
         if ($i == 0) {
                 $detail['id_local_str'] = "";
         }
@@ -290,7 +290,7 @@ function xnparticleDetailUrisString( $detail, $item_id ) {
                 if(empty($uris))$i--;
         }
         $detail['uri_str'] .= "</table>";
-        $detail['uris_cnt'] = strval(fmod($i, 2));
+        $detail['uris_cnt'] = array( 'value' => strval(fmod($i, 2)) );
         if ($i == 0) {
                 $detail['uri_str'] = "";
         }
@@ -2930,6 +2930,7 @@ function xnparticleGetConfirmBlock( $item_id ){
 		$detail['author_str']['value'] .= "</table>";
 		$detail['author_cnt'] = array( 'value' => strval(fmod(count($author_name), 2)));
 		$detail['keyword_str'] = array( 'value' => "" );
+		$detail['keywords_cnt'] = array( 'value' => '0' );
 		if ( !empty( $detail['keywords'] ) ){
 			$detail['keyword_str']['value'] = "<table>\n";
 			$keywords = explode( "\n", $detail['keywords']['value'] );
@@ -2942,6 +2943,7 @@ function xnparticleGetConfirmBlock( $item_id ){
 			$detail['keywords_cnt'] = array( 'value' => strval(fmod(count($keywords), 2)));
 		}
 		$detail['ndc_classification_str'] = array( 'value' => "" );
+		$detail['ndc_classifications_cnt'] = array( 'value' => '0' );
 		if ( !empty( $detail['ndc_classifications'] ) ){
 			$detail['ndc_classification_str']['value'] = "<table>\n";
 			$ndc_classifications = explode( "\n", $detail['ndc_classifications']['value'] );
@@ -2954,6 +2956,7 @@ function xnparticleGetConfirmBlock( $item_id ){
 			$detail['ndc_classifications_cnt'] = array( 'value' => strval(fmod(count($ndc_classifications), 2)));
 		}
 		$detail['physical_description_str'] = array( 'value' => "" );
+		$detail['physical_descriptions_cnt'] = array( 'value' => '0' );
 		if ( !empty( $detail['physical_descriptions'] ) ){
 			$detail['physical_description_str']['value'] = "<table>\n";
 			$physical_descriptions = explode( "\n", $detail['physical_descriptions']['value'] );
@@ -2966,6 +2969,7 @@ function xnparticleGetConfirmBlock( $item_id ){
 			$detail['physical_descriptions_cnt'] = array( 'value' => strval(fmod(count($physical_descriptions), 2)));
 		}
 		$detail['lang_str'] = array( 'value' => "" );
+		$detail['langs_cnt'] = array( 'value' => '0' );
 		if ( !empty( $detail['langs'] ) ){
 			$detail['lang_str']['value'] = "<table>\n";
 			$langs = explode( "\n", $detail['langs']['value'] );
@@ -2978,6 +2982,7 @@ function xnparticleGetConfirmBlock( $item_id ){
 			$detail['langs_cnt'] = array( 'value' => strval(fmod(count($langs), 2)));
 		}
 		$detail['id_issn_str'] = array( 'value' => "" );
+		$detail['id_issns_cnt'] = array( 'value' => '0' );
 		if ( !empty( $detail['id_issns'] ) ){
 			$detail['id_issn_str']['value'] = "<table>\n";
 			$id_issns = explode( "\n", $detail['id_issns']['value'] );
@@ -2990,6 +2995,7 @@ function xnparticleGetConfirmBlock( $item_id ){
 			$detail['id_issns_cnt'] = array( 'value' => strval(fmod(count($id_issns), 2)));
 		}
 		$detail['id_isbn_str'] = array( 'value' => "" );
+		$detail['id_isbns_cnt'] = array( 'value' => '0' );
 		if ( !empty( $detail['id_isbns'] ) ){
 			$detail['id_isbn_str']['value'] = "<table>\n";
 			$id_isbns = explode( "\n", $detail['id_isbns']['value'] );
@@ -3002,6 +3008,7 @@ function xnparticleGetConfirmBlock( $item_id ){
 			$detail['id_isbns_cnt'] = array( 'value' => strval(fmod(count($id_isbns), 2)));
 		}
 		$detail['id_doi_str'] = array( 'value' => "" );
+		$detail['id_dois_cnt'] = array( 'value' => '0' );
 		if ( !empty( $detail['id_dois'] ) ){
 			$detail['id_doi_str']['value'] = "<table>\n";
 			$id_dois = explode( "\n", $detail['id_dois']['value'] );
@@ -3014,6 +3021,7 @@ function xnparticleGetConfirmBlock( $item_id ){
 			$detail['id_dois_cnt'] = array( 'value' => strval(fmod(count($id_dois), 2)));
 		}
 		$detail['id_uri_str'] = array( 'value' => "" );
+		$detail['id_uris_cnt'] = array( 'value' => '0' );
 		if ( !empty( $detail['id_uris'] ) ){
 			$detail['id_uri_str']['value'] = "<table>\n";
 			$id_uris = explode( "\n", $detail['id_uris']['value'] );
@@ -3026,6 +3034,7 @@ function xnparticleGetConfirmBlock( $item_id ){
 			$detail['id_uris_cnt'] = array( 'value' => strval(fmod(count($id_uris), 2)));
 		}
 		$detail['id_local_str'] = array( 'value' => "" );
+		$detail['id_locals_cnt'] = array( 'value' => '0' );
 		if ( !empty( $detail['id_locals'] ) ){
 			$detail['id_local_str']['value'] = "<table>\n";
 			$id_locals = explode( "\n", $detail['id_locals']['value'] );
@@ -3038,6 +3047,7 @@ function xnparticleGetConfirmBlock( $item_id ){
 			$detail['id_locals_cnt'] = array( 'value' => strval(fmod(count($id_locals), 2)));
 		}
 		$detail['uri_str'] = array( 'value' => "" );
+		$detail['uris_cnt'] = array( 'value' => '0' );
 		if ( !empty( $detail['uris'] ) ){
 			$detail['uri_str']['value'] = "<table>\n";
 			$uris = explode( "\n", $detail['uris']['value'] );
