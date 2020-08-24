@@ -64,4 +64,3 @@ echo "</table>";
 
 xoops_cp_footer();
 
-?>

@@ -1706,4 +1706,3 @@ $out_var[0] = $in_var[0].$in_var[1].$in_var[2].$in_var[3].$in_var[4].$in_var[5].
   ),
 );
 
-?>

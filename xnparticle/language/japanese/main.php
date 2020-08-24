@@ -99,4 +99,3 @@ define( "_MD_XNPARTICLE_DETAIL_NO_PDF_MESSAGE", "Ì¤¸ø³«" );
 
 define( "_MD_XNPARTICLE_INSTITUTION_NAME", "µ¡´ØÌ¾" );
 
-?>

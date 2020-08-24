@@ -180,4 +180,4 @@ function xoops_module_update_xnparticle ( $xoopsMod, $oldversion) {
 	}
 	return true;
 }
-?>
+

@@ -11,4 +11,3 @@ define("_MI_XNPARTICLE_CFG_SHOW_PDF_DESC","");
 define("_MI_XNPARTICLE_CFG_SHOW_ABST",     "Abstract の公開レベル");
 define("_MI_XNPARTICLE_CFG_SHOW_ABST_DESC","");
 
-?>

@@ -92,4 +92,3 @@ define( '_XR_XNPARTICLE_DISPLAY_NAME_THIS_ITEM_DOCUMENT', 'This Item: Document' 
 define( '_XR_XNPARTICLE_DISPLAY_NAME_THIS_ITEM_URI', 'This Item: URI' );
 define( '_XR_XNPARTICLE_DISPLAY_NAME_ACCESS_CONDITION', 'Access Condition' );
 
-?>

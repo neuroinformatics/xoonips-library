@@ -170,4 +170,4 @@ function xoops_module_uninstall_xnparticle( $xoopsMod ) {
 
 	return true;
 }
-?>
+

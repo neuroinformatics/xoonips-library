@@ -99,4 +99,3 @@ define( "_MD_XNPARTICLE_DETAIL_NO_PDF_MESSAGE", "未公開" );
 
 define( "_MD_XNPARTICLE_INSTITUTION_NAME", "機関名" );
 
-?>

@@ -100,5 +100,4 @@ $modversion['config'][2]['options'] = array('Public' => OL_PUBLIC, 'Group' => OL
 $modversion['onInstall']   = 'include/oninstall.inc.php'; 
 $modversion['onUpdate']    = 'include/onupdate.inc.php';
 $modversion['onUninstall'] = 'include/onuninstall.inc.php';
-?>
 

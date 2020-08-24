@@ -68,4 +68,3 @@ function xoops_module_install_xnparticle( $xoopsMod ) {
 	return true;
 } 
 
-?>

@@ -100,4 +100,3 @@ define( "_MD_XNPARTICLE_DETAIL_NO_PDF_MESSAGE", "This item has no Attached file.
 
 define( "_MD_XNPARTICLE_INSTITUTION_NAME", "Institution Name" );
 
-?>

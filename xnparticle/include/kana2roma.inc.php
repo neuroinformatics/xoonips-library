@@ -1293,4 +1293,3 @@ function _xnparticleKatakana2Roma( $str ) {
   return $str2;
 }
 
-?>

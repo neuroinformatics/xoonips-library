@@ -4890,4 +4890,3 @@ function _xnparticle_get_form_request( $is_add_mode, $do_escape_repeatable ) {
   return $detail;
 }
 
-?>

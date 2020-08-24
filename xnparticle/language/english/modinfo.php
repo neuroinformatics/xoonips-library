@@ -11,4 +11,3 @@ define("_MI_XNPARTICLE_CFG_SHOW_PDF_DESC","");
 define("_MI_XNPARTICLE_CFG_SHOW_ABST",     "show Abstract");
 define("_MI_XNPARTICLE_CFG_SHOW_ABST_DESC","");
 
-?>
