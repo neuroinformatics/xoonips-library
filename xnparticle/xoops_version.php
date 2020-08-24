@@ -31,9 +31,10 @@ if ( ! defined( 'XOOPS_ROOT_PATH' ) ) exit();
 // 1.32 -> 1.33 add function on detail page  and bug fix
 // 1.33 -> 1.4  support XooNIps v3.4x
 // 1.4  -> 1.5  support XooNIps v3.4.7 and Junii2Ver.3
+// 1.50 -> 1.51 support XooNIps v3.49
 
 $modversion['name']        = _MI_XNPARTICLE_NAME;
-$modversion['version']     = 1.50;
+$modversion['version']     = 1.51;
 $modversion['description'] = _MI_XNPARTICLE_DESC;
 $modversion['credits']     = "Keio University(http://www.lib.keio.ac.jp/) and RIKEN, Japan(http://www.riken.jp/)";
 $modversion['author']      = "The XooNIps Library Module Project(http://sourceforge.jp/projects/xoonips-library/) ";
