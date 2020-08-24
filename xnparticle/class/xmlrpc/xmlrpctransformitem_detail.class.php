@@ -36,4 +36,3 @@ if ( ! defined( 'XOOPS_ROOT_PATH' ) ) {
 class XNPArticleXmlRpcTransformItemDetail extends XooNIpsXmlRpcTransformElement {
 }
 
-?>

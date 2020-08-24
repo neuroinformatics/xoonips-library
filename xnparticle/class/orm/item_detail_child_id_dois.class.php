@@ -33,8 +33,8 @@ if ( ! defined( 'XOOPS_ROOT_PATH' ) ) {
  * article item detail child id dois information object class
  */
 class XNPArticleOrmItemDetailChildIdDois extends XooNIpsTableObject {
-  function XNPArticleOrmItemDetailChildIdDois() {
-    parent::XooNIpsTableObject();
+  function __construct() {
+    parent::__construct();
     $this->initVar( 'article_child_id_dois_id', XOBJ_DTYPE_INT, 0, false );
     $this->initVar( 'article_id', XOBJ_DTYPE_INT, 0, true );
     $this->initVar( 'id_dois', XOBJ_DTYPE_TXTBOX, '', false, 50 );
@@ -46,9 +46,9 @@ class XNPArticleOrmItemDetailChildIdDois extends XooNIpsTableObject {
  * article item detail child id dois information handler class
  */
 class XNPArticleOrmItemDetailChildIdDoisHandler extends XooNIpsTableObjectHandler {
-  function XNPArticleOrmItemDetailChildIdDoisHandler( &$db ) {
-    parent::XooNIpsTableObjectHandler( $db );
+  function __construct( &$db ) {
+    parent::__construct( $db );
     $this->__initHandler( 'XNPArticleOrmItemDetailChildIdDois', 'xnparticle_item_detail_child_id_dois', 'article_child_id_dois_id', false );
   }
 }
-?>
+

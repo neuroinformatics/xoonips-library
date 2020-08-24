@@ -33,8 +33,8 @@ if ( ! defined( 'XOOPS_ROOT_PATH' ) ) {
  * article item detail child langs information object class
  */
 class XNPArticleOrmItemDetailChildLangs extends XooNIpsTableObject {
-  function XNPArticleOrmItemDetailChildLangs() {
-    parent::XooNIpsTableObject();
+  function __construct() {
+    parent::__construct();
     $this->initVar( 'article_child_langs_id', XOBJ_DTYPE_INT, 0, false );
     $this->initVar( 'article_id', XOBJ_DTYPE_INT, 0, true );
     $this->initVar( 'langs', XOBJ_DTYPE_TXTBOX, '', false, 50 );
@@ -46,9 +46,9 @@ class XNPArticleOrmItemDetailChildLangs extends XooNIpsTableObject {
  * article item detail child langs information handler class
  */
 class XNPArticleOrmItemDetailChildLangsHandler extends XooNIpsTableObjectHandler {
-  function XNPArticleOrmItemDetailChildLangsHandler( &$db ) {
-    parent::XooNIpsTableObjectHandler( $db );
+  function __construct( &$db ) {
+    parent::__construct( $db );
     $this->__initHandler( 'XNPArticleOrmItemDetailChildLangs', 'xnparticle_item_detail_child_langs', 'article_child_langs_id', false );
   }
 }
-?>
+

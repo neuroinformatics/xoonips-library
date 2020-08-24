@@ -33,8 +33,8 @@ if ( ! defined( 'XOOPS_ROOT_PATH' ) ) {
  * article item detail child author information object class
  */
 class XNPArticleOrmItemDetailChildAuthor extends XooNIpsTableObject {
-  function XNPArticleOrmItemDetailChildAuthor() {
-    parent::XooNIpsTableObject();
+  function __construct() {
+    parent::__construct();
     $this->initVar( 'article_child_author_id', XOBJ_DTYPE_INT, 0, false );
     $this->initVar( 'article_id', XOBJ_DTYPE_INT, 0, true );
     $this->initVar( 'author_id', XOBJ_DTYPE_TXTBOX, '', false, 255 );
@@ -53,9 +53,9 @@ class XNPArticleOrmItemDetailChildAuthor extends XooNIpsTableObject {
  * article item detail child author information handler class
  */
 class XNPArticleOrmItemDetailChildAuthorHandler extends XooNIpsTableObjectHandler {
-  function XNPArticleOrmItemDetailChildAuthorHandler( &$db ) {
-    parent::XooNIpsTableObjectHandler( $db );
+  function __construct( &$db ) {
+    parent::__construct( $db );
     $this->__initHandler( 'XNPArticleOrmItemDetailChildAuthor', 'xnparticle_item_detail_child_author', 'article_child_author_id', false );
   }
 }
-?>
+

@@ -33,8 +33,8 @@ if ( ! defined( 'XOOPS_ROOT_PATH' ) ) {
  * article item detail child physical descriptions information object class
  */
 class XNPArticleOrmItemDetailChildPhysicalDescriptions extends XooNIpsTableObject {
-  function XNPArticleOrmItemDetailChildPhysicalDescriptions() {
-    parent::XooNIpsTableObject();
+  function __construct() {
+    parent::__construct();
     $this->initVar( 'article_child_physical_descriptions_id', XOBJ_DTYPE_INT, 0, false );
     $this->initVar( 'article_id', XOBJ_DTYPE_INT, 0, true );
     $this->initVar( 'physical_descriptions', XOBJ_DTYPE_TXTBOX, '', false, 1000 );
@@ -46,9 +46,9 @@ class XNPArticleOrmItemDetailChildPhysicalDescriptions extends XooNIpsTableObjec
  * article item detail child physical descriptions information handler class
  */
 class XNPArticleOrmItemDetailChildPhysicalDescriptionsHandler extends XooNIpsTableObjectHandler {
-  function XNPArticleOrmItemDetailChildPhysicalDescriptionsHandler( &$db ) {
-    parent::XooNIpsTableObjectHandler( $db );
+  function __construct( &$db ) {
+    parent::__construct( $db );
     $this->__initHandler( 'XNPArticleOrmItemDetailChildPhysicalDescriptions', 'xnparticle_item_detail_child_physical_descriptions', 'article_child_physical_descriptions_id', false );
   }
 }
-?>
+

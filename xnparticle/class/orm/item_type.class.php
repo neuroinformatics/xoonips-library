@@ -35,8 +35,8 @@ include_once XOONIPS_PATH.'/class/orm/item_type.class.php';
  * @brief Data object of Article detail information
  */
 class XNPArticleOrmItemType extends XooNIpsOrmItemType {
-  function XNPArticleOrmItemType() {
-    parent::XooNIpsOrmItemType( 'xnparticle' );
+  function __construct() {
+    parent::__construct( 'xnparticle' );
   }
 }
 
@@ -44,10 +44,9 @@ class XNPArticleOrmItemType extends XooNIpsOrmItemType {
  * @brief handler of item type
  */
 class XNPArticleOrmItemTypeHandler extends XooNIpsOrmItemTypeHandler {
-  function XNPArticleOrmItemTypeHandler( &$db ) {
-    parent::XooNIpsOrmItemTypeHandler( $db );
+  function __construct( &$db ) {
+    parent::__construct( $db );
     $this->__initHandler( 'XNPArticleOrmItemType', 'xoonips_item_type', 'item_type_id', false );
   }
 }
 
-?>

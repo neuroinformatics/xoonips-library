@@ -43,8 +43,8 @@ class XNPArticleCompoHandler extends XooNIpsItemInfoCompoHandler {
    * @access public
    * @param resource &$db xoops database instance
    */
-  function XNPArticleCompoHandler( &$db ) {
-    parent::XooNIpsItemInfoCompoHandler( $db, 'xnparticle' );
+  function __construct( &$db ) {
+    parent::__construct( $db, 'xnparticle' );
   }
 
   /**
@@ -189,8 +189,8 @@ class XNPArticleCompo extends XooNIpsItemInfoCompo {
    *
    * @access public
    */
-  function XNPArticleCompo() {
-    parent::XooNIpsItemInfoCompo( 'xnparticle' );
+  function __construct() {
+    parent::__construct( 'xnparticle' );
   }
 }
-?>
+

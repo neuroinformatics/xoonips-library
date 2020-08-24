@@ -33,8 +33,8 @@ if ( ! defined( 'XOOPS_ROOT_PATH' ) ) {
  * article item detail child keywords information object class
  */
 class XNPArticleOrmItemDetailChildKeywords extends XooNIpsTableObject {
-  function XNPArticleOrmItemDetailChildKeywords() {
-    parent::XooNIpsTableObject();
+  function __construct() {
+    parent::__construct();
     $this->initVar( 'article_child_keywords_id', XOBJ_DTYPE_INT, 0, false );
     $this->initVar( 'article_id', XOBJ_DTYPE_INT, 0, true );
     $this->initVar( 'keywords', XOBJ_DTYPE_TXTBOX, '', false, 65535 );
@@ -46,9 +46,9 @@ class XNPArticleOrmItemDetailChildKeywords extends XooNIpsTableObject {
  * article item detail child keywords information handler class
  */
 class XNPArticleOrmItemDetailChildKeywordsHandler extends XooNIpsTableObjectHandler {
-  function XNPArticleOrmItemDetailChildKeywordsHandler( &$db ) {
-    parent::XooNIpsTableObjectHandler( $db );
+  function __construct( &$db ) {
+    parent::__construct( $db );
     $this->__initHandler( 'XNPArticleOrmItemDetailChildKeywords', 'xnparticle_item_detail_child_keywords', 'article_child_keywords_id', false );
   }
 }
-?>
+

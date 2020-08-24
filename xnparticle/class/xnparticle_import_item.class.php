@@ -55,7 +55,7 @@ class XNPArticleImportItem extends XooNIpsImportItem {
    *
    * @access public
    */
-  function XNPArticleImportItem() {
+  function __construct() {
     $handler =& xoonips_getormcompohandler( 'xnparticle', 'item' );
     $this->_item =& $handler->create();
   }
@@ -211,8 +211,8 @@ class XNPArticleImportItemHandler extends XooNIpsImportItemHandler {
    *
    * @access public
    */
-  function XNPArticleImportItemHandler() {
-    parent::XooNIpsImportItemHandler();
+  function __construct() {
+    parent::__construct();
     $this->chandler =& xoonips_getormcompohandler( 'xnparticle', 'item' );
   }
 
@@ -638,4 +638,3 @@ class XNPArticleImportItemHandler extends XooNIpsImportItemHandler {
   }
 }
 
-?>

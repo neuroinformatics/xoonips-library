@@ -33,8 +33,8 @@ if ( ! defined( 'XOOPS_ROOT_PATH' ) ) {
  * XmlRpcTransform composer class for Article type
  */
 class XNPArticleXmlRpcTransformCompo extends XooNIpsXmlRpcTransformCompo {
-  function XNPArticleXmlRpcTransformCompo() {
-    parent::XooNIpsXmlRpcTransformCompo( 'xnparticle' );
+  function __construct() {
+    parent::__construct( 'xnparticle' );
   }
 
   /**
@@ -72,4 +72,3 @@ class XNPArticleXmlRpcTransformCompo extends XooNIpsXmlRpcTransformCompo {
   }
 }
 
-?>
