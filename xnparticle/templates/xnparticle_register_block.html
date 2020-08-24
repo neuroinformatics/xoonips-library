@@ -1,0 +1,977 @@
+<{* xnparticle register block *}>
+<{* $Revision: 1.6 $ *}>
+
+<font size='+1' color='red'><{$smarty.const._MD_XNPARTICLE_REGISTER_TOP_MESSAGE}></font>
+<table class="outer">
+ <!-- Basic Information -->
+ <tr>
+  <td class="head"><{$basic.doi.name}></td>
+  <td class="<{cycle name="oddeven" values="odd,even"}>"><{$basic.doi.value}></td>
+ </tr>
+ <tr>
+  <td class="head"><{$smarty.const._MD_XNPARTICLE_TITLE_LABEL}><{$smarty.const._MD_XOONIPS_ITEM_REQUIRED_MARK}></td>
+  <td class="<{cycle name="oddeven" values="odd,even"}>" >
+	<table>
+	 <tr>
+	  <td width="70"><{$basic.title.name}></td>
+      <td><input size=50 type='text' name='title' value='<{$detail.title|escape|replace:"&amp;#":"&#"}>' STYLE='ime-mode:inactive;' /></td>
+	 </tr>
+	 <tr>
+	  <td width="70"><{$smarty.const._MD_XNPARTICLE_KANA_LABEL}></td>
+	  <td>
+	   <input size=50 type='text' name='title_kana' value='<{$detail.title_kana|escape|replace:"&amp;#":"&#"}>' STYLE='ime-mode:active;' />
+	   <input type='hidden' name='xnparticleTitleRomajiFlag' value='' />
+       <button type='button' onclick='xnparticleTitleRomaji(this);'><{$smarty.const._MD_XNPARTICLE_ROMAJI_LABEL}></button>
+	  </td>
+	 </tr>
+	 <tr>
+	  <td width="70"><{$smarty.const._MD_XNPARTICLE_ROMAJI_LABEL}></td>
+	  <td><input size=50 type='text' name='title_romaji' value='<{$detail.title_romaji|escape|replace:"&amp;#":"&#"}>' STYLE='ime-mode:disabled;' /></td>
+	 </tr>
+	</table>
+  </td>
+ </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_SUB_TITLE_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" >
+	 <table>
+	  <tr>
+            <td width="70"><{$smarty.const._MD_XNPARTICLE_AUTHOR_NAME_LABEL}></td>
+	    <td><input size=40 type='text' name='sub_title_name_add' value='<{$detail.sub_title_name_add|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+	  <tr>
+            <td width="70"><{$smarty.const._MD_XNPARTICLE_KANA_LABEL}></td>
+	    <td>
+		<input size=40 type='text' name='sub_title_kana_add' value='<{$detail.sub_title_kana_add|escape|replace:"&amp;#":"&#"}>' />
+	   <input type='hidden' name='xnparticleSubTitleRomajiFlag' value='' />
+		<button type='button' onclick='xnparticleSubTitleRomaji(this);'><{$smarty.const._MD_XNPARTICLE_ROMAJI_LABEL}></button>
+	    </td>
+	  </tr>
+	  <tr>
+             <td width="70"><{$smarty.const._MD_XNPARTICLE_ROMAJI_LABEL}></td>
+	     <td><input size=40 type='text' name='sub_title_romaji_add' value='<{$detail.sub_title_romaji_add|escape|replace:"&amp;#":"&#"}>' STYLE='ime-mode:disabled;' />
+		<input type='hidden' name='xnparticleAddSubTitleFlag' value='' />
+                <button type='button' onclick='xnparticleAddSubTitle(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+		<input type='hidden' name='sub_title_name' value='<{$detail.sub_title_name|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='sub_title_kana' value='<{$detail.sub_title_kana|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='sub_title_romaji' value='<{$detail.sub_title_romaji|escape|replace:"&amp;#":"&#"}>' />
+  	     </td>
+	  </tr>
+<{if !empty( $detail.sub_title_str.value ) }>
+	  <tr>
+	    <td></td>
+	    <td class="<{cycle name="oddeven"}>"><{$detail.sub_title_str|replace:"&amp;#":"&#"}>
+		<input type='hidden' name='xnparticleUpdateSubTitleFlag' value='' />
+                <button type='button' onclick='xnparticleUpdateSubTitle(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	    </td>
+	  </tr>
+<{/if}>
+	 </table>
+	</td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_AUTHOR_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" >
+	 <table>
+	  <tr>
+            <td width="70"><{$smarty.const._MD_XNPARTICLE_AUTHOR_ID_LABEL}></td>
+	    <td><input size=40 type='text' name='author_id_add' value='<{$detail.author_id_add|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+	  <tr>
+            <td width="70"><{$smarty.const._MD_XNPARTICLE_AUTHOR_NAME_LABEL}></td>
+	    <td><input size=40 type='text' name='author_name_add' value='<{$detail.author_name_add|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+	  <tr>
+            <td width="70"><{$smarty.const._MD_XNPARTICLE_KANA_LABEL}></td>
+	    <td>
+		<input size=40 type='text' name='author_kana_add' value='<{$detail.author_kana_add|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='xnparticleAuthorRomajiFlag' value='' />
+		<button type='button' onclick='xnparticleAuthorRomaji(this);'><{$smarty.const._MD_XNPARTICLE_ROMAJI_LABEL}></button>
+	    </td>
+	  </tr>
+	  <tr>
+             <td width="70"><{$smarty.const._MD_XNPARTICLE_ROMAJI_LABEL}></td>
+	     <td><input size=40 type='text' name='author_romaji_add' value='<{$detail.author_romaji_add|escape|replace:"&amp;#":"&#"}>' STYLE='ime-mode:disabled;' /></td>
+	  </tr>
+	  <tr>
+	     <td width="70"><{$smarty.const._MD_XNPARTICLE_AUTHOR_AFFILIATION_LABEL}></td>
+	     <td>
+	  	<input size=40 type='text' name='author_affiliation_add' value='<{$detail.author_affiliation_add|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+	  <tr>
+	     <td width="70"><{$smarty.const._MD_XNPARTICLE_AUTHOR_AFFILIATION_TRANSLATION_LABEL}></td>
+	     <td>
+	  	<input size=40 type='text' name='author_affiliation_translation_add' value='<{$detail.author_affiliation_translation_add|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+	  <tr>
+	     <td width="70"><{$smarty.const._MD_XNPARTICLE_AUTHOR_ROLE_LABEL}></td>
+	     <td>
+	  	<input size=40 type='text' name='author_role_add' value='<{$detail.author_role_add|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+	  <tr>
+	     <td width="70"><{$smarty.const._MD_XNPARTICLE_AUTHOR_LINK_LABEL}></td>
+	     <td>
+		<input size=40 type='text' name='author_link_add' value='<{$detail.author_link_add|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='xnparticleAddAuthorFlag' value='' />
+                <button type='button' onclick='xnparticleAddAuthor(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+		<input type='hidden' name='author_id' value='<{$detail.author_id|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='author_name' value='<{$detail.author_name|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='author_kana' value='<{$detail.author_kana|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='author_romaji' value='<{$detail.author_romaji|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='author_affiliation' value='<{$detail.author_affiliation|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='author_affiliation_translation' value='<{$detail.author_affiliation_translation|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='author_role' value='<{$detail.author_role|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='author_link' value='<{$detail.author_link|escape|replace:"&amp;#":"&#"}>' />
+  	     </td>
+	  </tr>
+<{if !empty( $detail.author_str.value ) }>
+	  <tr>
+	    <td></td>
+	    <td class="<{cycle name="oddeven"}>"><{$detail.author_str|replace:"&amp;#":"&#"}>
+		<input type='hidden' name='xnparticleUpdateAuthorFlag' value='' />
+                <button type='button' onclick='xnparticleUpdateAuthor(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	    </td>
+	  </tr>
+<{/if}>
+	 </table>
+	</td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_EDITION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><input type='text' name='edition' value='<{$detail.edition|escape|replace:"&amp;#":"&#"}>' STYLE='ime-mode:inactive;' /></td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_PUBLISH_PLACE_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><input type='text' name='publish_place' value='<{$detail.publish_place|escape|replace:"&amp;#":"&#"}>' STYLE='ime-mode:inactive;' /></td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_PUBLISHER_LABEL}></td>
+	<td class="<{cycle name="oddeven"}>" >
+     <table>
+	  <tr>
+	   <td width="70"><{$smarty.const._MD_XNPARTICLE_AUTHOR_NAME_LABEL}></td>
+	   <td><input size=50 type='text' name='publisher' value='<{$detail.publisher|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+	  <tr>
+	   <td width="70"><{$smarty.const._MD_XNPARTICLE_KANA_LABEL}></td>
+	   <td>
+		<input size=50 type='text' name='publisher_kana' value='<{$detail.publisher_kana|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='xnparticlePublisherRomajiFlag' value='' />
+		<button type='button' onclick='xnparticlePublisherRomaji(this);'><{$smarty.const._MD_XNPARTICLE_ROMAJI_LABEL}></button>
+	   </td>
+	  </tr>
+	  <tr>
+	   <td width="70"><{$smarty.const._MD_XNPARTICLE_ROMAJI_LABEL}></td>
+	   <td><input size=50 type='text' name='publisher_romaji' value='<{$detail.publisher_romaji|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+     </table>
+	</td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_DATE_LABEL}></td>
+	<td class="<{cycle name="oddeven"}>" >
+     <table>
+	  <tr>
+	   <td width="70"><{$smarty.const._MD_XNPARTICLE_PUBLISH_YEAR_LABEL}></td>
+	   <td><input size=10 type='text' name='year_f' value='<{$detail.year_f|escape|replace:"&amp;#":"&#"}>' />(yyyy)-<input size=10 type='text' name='year_t' value='<{$detail.year_t|escape|replace:"&amp;#":"&#"}>' />(yyyy)</td>
+	  </tr>
+	  <tr>
+	   <td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_CREATE_LABEL}></td>
+	   <td><input size=50 type='text' name='date_create' value='<{$detail.date_create|escape|replace:"&amp;#":"&#"}>' />(yyyy-mm-dd)</td>
+	  </tr>
+	  <tr>
+	   <td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_UPDATE_LABEL}></td>
+	   <td><input size=50 type='text' name='date_update' value='<{$detail.date_update|escape|replace:"&amp;#":"&#"}>' />(yyyy-mm-dd)</td>
+	  </tr>
+	  <tr>
+	   <td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_RECORD_LABEL}></td>
+	   <td><input size=50 type='text' name='date_record' value='<{$detail.date_record|escape|replace:"&amp;#":"&#"}>' />(yyyy-mm-dd)</td>
+	  </tr>
+     </table>
+	</td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_PHYSICAL_DESCRIPTIONS_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>">
+	 <table>
+	  <tr>
+	   <td>
+	    <input size=50 type='text' name='physical_descriptions_add' value='<{$detail.physical_descriptions_add|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='xnparticleAddPhysicalDescriptionFlag' value='' />
+	    <button type='button' onclick='xnparticleAddPhysicalDescription(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+		<input type='hidden' name='physical_descriptions' value='<{$detail.physical_descriptions|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='physical_descriptions_str' value='<{$detail.physical_descriptions_str|escape|replace:"&amp;#":"&#"}>' />
+	   </td>
+	  </tr>
+<{if !empty( $detail.physical_description_str.value ) }>
+	  <tr>
+	    <td><{$detail.physical_description_str|replace:"&amp;#":"&#"}>
+		<input type='hidden' name='xnparticleUpdatePhysicalDescriptionFlag' value='' />
+        <button type='button' onclick='xnparticleUpdatePhysicalDescription(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	   </td>
+	  </tr>
+<{/if}>
+	 </table>
+	</td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_JTITLE_LABEL}></td>
+	<td class="<{cycle name="oddeven"}>" >
+     <table>
+	  <tr>
+	   <td width="70"><{$smarty.const._MD_XNPARTICLE_AUTHOR_NAME_LABEL}></td>
+	   <td><input size=50 type='text' name='jtitle' value='<{$detail.jtitle|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+	  <tr>
+	   <td width="70"><{$smarty.const._MD_XNPARTICLE_TRANSLATION_LABEL}></td>
+	   <td><input size=50 type='text' name='jtitle_translation' value='<{$detail.jtitle_translation|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+	  <tr>
+	   <td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_VOLUME_LABEL}></td>
+	   <td><input size=50 type='text' name='jtitle_volume' value='<{$detail.jtitle_volume|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+	  <tr>
+	   <td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_ISSUE_LABEL}></td>
+	   <td><input size=50 type='text' name='jtitle_issue' value='<{$detail.jtitle_issue|escape|replace:"&amp;#":"&#"}>' /></td>
+	  </tr>
+	  <tr>
+           <td colspan='2'>
+             <table>
+	       <tr>
+	         <td width="70" rowspan='2'><{$smarty.const._MD_XNPARTICLE_YEAR_LABEL}></td>
+	         <td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_YEAR_LABEL}></td>
+	         <td><input size=50 type='text' name='jtitle_year' value='<{$detail.jtitle_year|escape|replace:"&amp;#":"&#"}>' /></td>
+	       </tr>
+	       <tr>
+	         <td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_MONTH_LABEL}></td>
+	         <td><input size=50 type='text' name='jtitle_month' value='<{$detail.jtitle_month|escape|replace:"&amp;#":"&#"}>' /></td>
+	       </tr>
+             </table>
+           </td>
+          </tr>
+	  <tr>
+           <td colspan='2'>
+             <table>
+	       <tr>
+                 <td width="70" rowspan='2'><{$smarty.const._MD_XNPARTICLE_PAGE_LABEL}></td>
+                 <td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_SPAGE_LABEL}></td>
+	         <td><input size=50 type='text' name='jtitle_spage' value='<{$detail.jtitle_spage|escape|replace:"&amp;#":"&#"}>' /></td>
+	       </tr>
+	       <tr>
+	         <td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_EPAGE_LABEL}></td>
+	         <td><input size=50 type='text' name='jtitle_epage' value='<{$detail.jtitle_epage|escape|replace:"&amp;#":"&#"}>' /></td>
+	       </tr>
+             </table>
+           </td>
+         </tr>
+     </table>
+	</td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_IDENTIFIER_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" >
+      <table>
+        <tr>
+          <td width="70"><{$smarty.const._MD_XNPARTICLE_ISSN_LABEL}></td>
+          <td>
+	    <table>
+	      <tr>
+	        <td>
+	          <input size=50 type='text' name='id_issns_add' value='<{$detail.id_issns_add|escape|replace:"&amp;#":"&#"}>' />
+		  <input type='hidden' name='xnparticleAddIdIssnFlag' value='' />
+	          <button type='button' onclick='xnparticleAddIdIssn(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+		  <input type='hidden' name='id_issns' value='<{$detail.id_issns|escape|replace:"&amp;#":"&#"}>' />
+		  <input type='hidden' name='id_issns_str' value='<{$detail.id_issns_str|escape|replace:"&amp;#":"&#"}>' />
+	        </td>
+	      </tr>
+              <{if !empty( $detail.id_issn_str.value ) }>
+	      <tr>
+	        <td><{$detail.id_issn_str|replace:"&amp;#":"&#"}>
+		  <input type='hidden' name='xnparticleUpdateIdIssnFlag' value='' />
+                  <button type='button' onclick='xnparticleUpdateIdIssn(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	        </td>
+	      </tr>
+              <{/if}>
+	    </table>
+	  </td>
+        </tr>
+        <tr>
+          <td width="70"><{$smarty.const._MD_XNPARTICLE_ISBN_LABEL}></td>
+          <td>
+	    <table>
+	      <tr>
+	        <td>
+	          <input size=50 type='text' name='id_isbns_add' value='<{$detail.id_isbns_add|escape|replace:"&amp;#":"&#"}>' />
+		  <input type='hidden' name='xnparticleAddIdIsbnFlag' value='' />
+	          <button type='button' onclick='xnparticleAddIdIsbn(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+		  <input type='hidden' name='id_isbns' value='<{$detail.id_isbns|escape|replace:"&amp;#":"&#"}>' />
+		  <input type='hidden' name='id_isbns_str' value='<{$detail.id_isbns_str|escape|replace:"&amp;#":"&#"}>' />
+	        </td>
+	      </tr>
+              <{if !empty( $detail.id_isbn_str.value ) }>
+	      <tr>
+	        <td><{$detail.id_isbn_str|replace:"&amp;#":"&#"}>
+	          <input type='hidden' name='xnparticleUpdateIdIsbnFlag' value='' />
+                  <button type='button' onclick='xnparticleUpdateIdIsbn(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	        </td>
+	      </tr>
+              <{/if}>
+	    </table>
+	  </td>
+        </tr>
+        <tr>
+          <td width="70"><{$smarty.const._MD_XNPARTICLE_DOI_LABEL}></td>
+          <td>
+	    <table>
+	      <tr>
+	        <td>
+	          <input size=50 type='text' name='id_dois_add' value='<{$detail.id_dois_add|escape|replace:"&amp;#":"&#"}>' />
+		  <input type='hidden' name='xnparticleAddIdDoiFlag' value='' />
+	          <button type='button' onclick='xnparticleAddIdDoi(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+		  <input type='hidden' name='id_dois' value='<{$detail.id_dois|escape|replace:"&amp;#":"&#"}>' />
+		  <input type='hidden' name='id_dois_str' value='<{$detail.id_dois_str|escape|replace:"&amp;#":"&#"}>' />
+	        </td>
+	      </tr>
+              <{if !empty( $detail.id_doi_str.value ) }>
+	      <tr>
+	        <td><{$detail.id_doi_str|replace:"&amp;#":"&#"}>
+	          <input type='hidden' name='xnparticleUpdateIdDoiFlag' value='' />
+                  <button type='button' onclick='xnparticleUpdateIdDoi(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	        </td>
+	      </tr>
+              <{/if}>
+	    </table>
+	  </td>
+        </tr>
+        <tr>
+          <td width="70"><{$smarty.const._MD_XNPARTICLE_URI_LABEL}></td>
+          <td>
+	    <table>
+	      <tr>
+	        <td>
+	          <input size=50 type='text' name='id_uris_add' value='<{$detail.id_uris_add|escape|replace:"&amp;#":"&#"}>' />
+		  <input type='hidden' name='xnparticleAddIdUriFlag' value='' />
+	          <button type='button' onclick='xnparticleAddIdUri(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+		  <input type='hidden' name='id_uris' value='<{$detail.id_uris|escape|replace:"&amp;#":"&#"}>' />
+		  <input type='hidden' name='id_uris_str' value='<{$detail.id_uris_str|escape|replace:"&amp;#":"&#"}>' />
+	        </td>
+	      </tr>
+              <{if !empty( $detail.id_uri_str.value ) }>
+	      <tr>
+	        <td><{$detail.id_uri_str|replace:"&amp;#":"&#"}>
+	          <input type='hidden' name='xnparticleUpdateIdUriFlag' value='' />
+                  <button type='button' onclick='xnparticleUpdateIdUri(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	        </td>
+	      </tr>
+              <{/if}>
+	    </table>
+          </td>
+        </tr>
+	<tr>
+	  <td width="70"><{$smarty.const._MD_XNPARTICLE_SELF_DOI_LABEL}></td>
+          <td>
+            <table>
+              <tr>
+                <td>
+                  <input size=50 type='text' name='self_doi' value='<{$detail.self_doi|escape|replace:"&amp;#":"&#"}>' />
+                </td>
+              </tr>
+	    </table>
+	   </td>	
+	</tr>
+        <tr>
+          <td width="70"><{$smarty.const._MD_XNPARTICLE_NAID_LABEL}></td>
+          <td>
+            <table>
+              <tr>
+                <td>
+                  <input size=50 type='text' name='naid' value='<{$detail.naid|escape|replace:"&amp;#":"&#"}>' />
+                </td>
+              </tr>
+            </table>
+           </td>
+        </tr>
+        <tr>
+          <td width="70"><{$smarty.const._MD_XNPARTICLE_ICHUSHI_LABEL}></td>
+          <td>
+            <table>
+              <tr>
+                <td>
+                  <input size=50 type='text' name='ichushi' value='<{$detail.ichushi|escape|replace:"&amp;#":"&#"}>' />
+                </td>
+              </tr>
+            </table>
+           </td>
+        </tr>
+        <tr>
+          <td width="70"><{$smarty.const._MD_XNPARTICLE_OTHER_LABEL}></td>
+          <td>
+	    <table>
+	      <tr>
+	        <td>
+	          <input size=50 type='text' name='id_locals_add' value='<{$detail.id_locals_add|escape|replace:"&amp;#":"&#"}>' />
+	          <input type='hidden' name='xnparticleAddIdLocalFlag' value='' />
+	          <button type='button' onclick='xnparticleAddIdLocal(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+	          <input type='hidden' name='id_locals' value='<{$detail.id_locals|escape|replace:"&amp;#":"&#"}>' />
+	          <input type='hidden' name='id_locals_str' value='<{$detail.id_locals_str|escape|replace:"&amp;#":"&#"}>' />
+	        </td>
+	      </tr>
+              <{if !empty( $detail.id_local_str.value ) }>
+	      <tr>
+	        <td><{$detail.id_local_str|replace:"&amp;#":"&#"}>
+	          <input type='hidden' name='xnparticleUpdateIdLocalFlag' value='' />
+                   <button type='button' onclick='xnparticleUpdateIdLocal(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	        </td>
+	      </tr>
+              <{/if}>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_DOCTORS_DEGREE_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" >
+     <table>
+          <tr>
+           <td width="80"><{$smarty.const._MD_XNPARTICLE_GRANT_ID_LABEL}></td>
+           <td><input size=50 type='text' name='grant_id' value='<{$detail.grant_id|escape|replace:"&amp;#":"&#"}>' /><br><{$smarty.const._MD_XNPARTICLE_GRANT_ID_DESC}></td>
+          </tr>
+          <tr>
+           <td width=100"><{$smarty.const._MD_XNPARTICLE_DATE_OF_GRANTED_LABEL}></td>
+           <td><input size=50 type='text' name='date_of_granted' value='<{$detail.date_of_granted|escape|replace:"&amp;#":"&#"}>' />(yyyy-mm-dd)</td>
+          </tr>
+          <tr>
+           <td width="70"><{$smarty.const._MD_XNPARTICLE_DEGREE_NAME_LABEL}></td>
+           <td><input size=50 type='text' name='degree_name' value='<{$detail.degree_name|escape|replace:"&amp;#":"&#"}>' /></td>
+          </tr>
+          <tr>
+           <td width="70"><{$smarty.const._MD_XNPARTICLE_GRANTOR_LABEL}></td>
+           <td><input size=50 type='text' name='grantor' value='<{$detail.grantor|escape|replace:"&amp;#":"&#"}>' /></td>
+          </tr>
+     </table>
+         </td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ABSTRACT_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>"><textarea name='abstract' rows='4' cols='40'><{$detail.abstract|escape|replace:"&amp;#":"&#"}></textarea></td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_TABLE_OF_CONTENTS_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>"><textarea name='table_of_contents' rows='4' cols='40'><{$detail.table_of_contents|escape|replace:"&amp;#":"&#"}></textarea></td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_KEYWORDS_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>">
+	 <table>
+	  <tr>
+	   <td>
+	    <input size=50 type='text' name='keywords_add' value='<{$detail.keywords_add|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='xnparticleAddKeywordFlag' value='' />
+	    <button type='button' onclick='xnparticleAddKeyword(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+		<input type='hidden' name='keywords' value='<{$detail.keywords|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='keywords_str' value='<{$detail.keywords_str|escape|replace:"&amp;#":"&#"}>' />
+	   </td>
+	  </tr>
+<{if !empty( $detail.keyword_str.value ) }>
+	  <tr>
+	    <td><{$detail.keyword_str|replace:"&amp;#":"&#"}>
+		<input type='hidden' name='xnparticleUpdateKeywordFlag' value='' />
+        <button type='button' onclick='xnparticleUpdateKeyword(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	   </td>
+	  </tr>
+<{/if}>
+	 </table>
+	</td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_NDC_CLASSIFICATIONS_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>">
+	 <table>
+	  <tr>
+	   <td>
+	    <input size=50 type='text' name='ndc_classifications_add' value='<{$detail.ndc_classifications_add|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='xnparticleAddNdcClassificationFlag' value='' />
+	    <button type='button' onclick='xnparticleAddNdcClassification(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+		<input type='hidden' name='ndc_classifications' value='<{$detail.ndc_classifications|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='ndc_classifications_str' value='<{$detail.ndc_classifications_str|escape|replace:"&amp;#":"&#"}>' />
+	   </td>
+	  </tr>
+<{if !empty( $detail.ndc_classification_str.value ) }>
+	  <tr>
+	    <td><{$detail.ndc_classification_str|replace:"&amp;#":"&#"}>
+		<input type='hidden' name='xnparticleUpdateNdcClassificationFlag' value='' />
+        <button type='button' onclick='xnparticleUpdateNdcClassification(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	   </td>
+	  </tr>
+<{/if}>
+	 </table>
+	</td>
+  </tr>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_DESCRIPTION_LABEL}></td>
+   <td class="<{cycle name="oddeven"}>" ><{$basic.description.value}></td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_LANGS_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>">
+	 <table>
+	  <tr>
+	   <td>
+	    <input size=50 type='text' name='langs_add' value='<{$detail.langs_add|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='xnparticleAddLangFlag' value='' />
+	    <button type='button' onclick='xnparticleAddLang(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+		<input type='hidden' name='langs' value='<{$detail.langs|escape|replace:"&amp;#":"&#"}>' />
+		<input type='hidden' name='langs_str' value='<{$detail.langs_str|escape|replace:"&amp;#":"&#"}>' />
+	   </td>
+	  </tr>
+<{if !empty( $detail.lang_str.value ) }>
+	  <tr>
+	    <td><{$detail.lang_str|replace:"&amp;#":"&#"}>
+		<input type='hidden' name='xnparticleUpdateLangFlag' value='' />
+        <button type='button' onclick='xnparticleUpdateLang(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	   </td>
+	  </tr>
+<{/if}>
+	 </table>
+	</td>
+  </tr>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_TYPE_OF_RESOURCE_LABEL}></td>
+   <td class="<{cycle name="oddeven"}>" ><input size=50 type='text' name='type_of_resource' value='<{$detail.type_of_resource|escape|replace:"&amp;#":"&#"}>' STYLE='ime-mode:inactive;' /></td>
+  </tr>
+ <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_GENRE_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><input size=50 type='text' name='genre' value='<{$detail.genre|escape|replace:"&amp;#":"&#"}>' STYLE='ime-mode:inactive;' /></td>
+ </tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_TEXTVERSION_LABEL}></td>
+   <td class="<{cycle name="oddeven"}>" ><input size=50 type='text' name='textversion' value='<{$detail.textversion|escape|replace:"&amp;#":"&#"}>' STYLE='ime-mode:inactive;' /></td>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ITEM_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>">
+      <table>
+        <tr>
+          <td width="70"><{$smarty.const._MD_XNPARTICLE_IMAGES_LABEL}></td>
+          <td><{$article_images.value}></td>
+        </tr>
+        <tr>
+          <td width="70"><{$smarty.const._MD_XNPARTICLE_ATTACHMENT_LABEL}></td>
+          <td><{$article_attachment.value}></td>
+        </tr>
+        <tr>
+          <td width="70"><{$smarty.const._MD_XNPARTICLE_URI_LABEL}></td>
+          <td>
+            <table>
+	      <tr>
+	        <td>
+                  <input size=50 type='text' name='uris_add' value='<{$detail.uris_add|escape|replace:"&amp;#":"&#"}>' />
+	          <input type='hidden' name='xnparticleAddUriFlag' value='' />
+	          <button type='button' onclick='xnparticleAddUri(this);'><{$smarty.const._MD_XNPARTICLE_ADD_LABEL}></button>
+                  <input type='hidden' name='uris' value='<{$detail.uris|escape|replace:"&amp;#":"&#"}>' />
+		  <input type='hidden' name='uris_str' value='<{$detail.uris_str|escape|replace:"&amp;#":"&#"}>' />
+	        </td>
+	      </tr>
+              <{if !empty( $detail.uri_str.value ) }>
+	      <tr>
+	        <td><{$detail.uri_str|replace:"&amp;#":"&#"}>
+	          <input type='hidden' name='xnparticleUpdateUriFlag' value='' />
+                  <button type='button' onclick='xnparticleUpdateUri(this);'><{$smarty.const._MD_XNPARTICLE_UPDATE_LABEL}></button>
+	        </td>
+	      </tr>
+              <{/if}>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ACCESS_CONDITION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>"><textarea name='access_condition' rows='4' cols='40'><{$detail.access_condition|escape|replace:"&amp;#":"&#"}></textarea></td>
+  </tr>
+<{if !empty( $basic.last_update_date.value ) }>
+  <tr>
+    <td class="head"><{$basic.last_update_date.name}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.last_update_date.value}></td>
+  </tr>
+<{/if}>
+<{if !empty( $basic.creation_date.value ) }>
+  <tr>
+    <td class="head"><{$basic.creation_date.name}></td>
+    <td class="<{cycle name="oddeven"}>"><{$basic.creation_date.value}></td>
+  </tr>
+<{/if}>
+<{if !empty( $basic.contributor.value ) }>
+  <tr>
+    <td class="head"><{$basic.contributor.name}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.contributor.value}></td>
+  </tr>
+<{/if}>
+<{if !empty( $basic.item_type.value ) }>
+  <tr>
+    <td class="head"><{$basic.item_type.name}></td>
+    <td class="<{cycle name="oddeven"}>"><{$basic.item_type.value}></td>
+  </tr>
+<{/if}>
+<{if !empty( $basic.change_logs.value ) }>
+  <tr>
+    <td class="head"><{$basic.change_logs.name}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.change_logs.value}></td>
+  </tr>
+<{/if}>
+
+  <!-- Article Item Detail Information -->
+  <!-- index -->
+  <tr>
+   <td class="head"><{$index.name}></td>
+   <td class="<{cycle name="oddeven"}>"><{$index.value}></td>
+  </tr>
+  <!-- related_to -->
+  <tr>
+   <td class="head"><{$basic.related_to.name}></td>
+   <td class="<{cycle name="oddeven"}>"><{$basic.related_to.value}></td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+<!--
+// 
+function onSubmitItemType(form){
+	var result = true;
+	if ( form.title.value == '' ){
+		result = false;
+		window.alert("<{$smarty.const._MD_XNPARTICLE_TITLE_REQUIRED}>");
+	}
+	return result;
+}
+
+// title romaji request
+function xnparticleTitleRomaji(button){
+    var form = button.form;
+	if ( form.title_kana.value == '' ){
+		window.alert("<{$smarty.const._MD_XNPARTICLE_TITLE_REQUIRED}>");
+		return false;
+	}
+	else {
+	    document.getElementsByName('xnparticleTitleRomajiFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// sub title romaji request
+function xnparticleSubTitleRomaji(button){
+    var form = button.form;
+	if ( form.sub_title_kana_add.value == '' ){
+		window.alert("<{$smarty.const._MD_XNPARTICLE_TITLE_REQUIRED}>");
+		return false;
+	}
+	else {
+	    document.getElementsByName('xnparticleSubTitleRomajiFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// author romaji request
+function xnparticleAuthorRomaji(button){
+    var form = button.form;
+	if ( form.author_kana_add.value == '' ){
+		window.alert("<{$smarty.const._MD_XNPARTICLE_TITLE_REQUIRED}>");
+		return false;
+	}
+	else {
+	    document.getElementsByName('xnparticleAuthorRomajiFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// publisher romaji request
+function xnparticlePublisherRomaji(button){
+    var form = button.form;
+	if ( form.publisher_kana.value == '' ){
+		window.alert("<{$smarty.const._MD_XNPARTICLE_TITLE_REQUIRED}>");
+		return false;
+	}
+	else {
+	    document.getElementsByName('xnparticlePublisherRomajiFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// add sub title request
+function xnparticleAddSubTitle(button){
+    var form = button.form;
+	if (form.sub_title_name_add.value != ''){
+	    document.getElementsByName('xnparticleAddSubTitleFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update sub title request
+function xnparticleUpdateSubTitle(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdateSubTitleFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+
+// add author request
+function xnparticleAddAuthor(button){
+    var form = button.form;
+	if (( form.author_name_add.value != '' ) || ( form.author_romaji_add.value != '' ) || ( form.author_affiliation_add.value != '' )){
+	    document.getElementsByName('xnparticleAddAuthorFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update author request
+function xnparticleUpdateAuthor(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdateAuthorFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+
+// add keyword request
+function xnparticleAddKeyword(button){
+    var form = button.form;
+	if ( form.keywords_add.value != '' ){
+	    document.getElementsByName('xnparticleAddKeywordFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update keyword request
+function xnparticleUpdateKeyword(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdateKeywordFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+
+// add ndc_classification request
+function xnparticleAddNdcClassification(button){
+    var form = button.form;
+	if ( form.ndc_classifications_add.value != '' ){
+	    document.getElementsByName('xnparticleAddNdcClassificationFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update ndc_classification request
+function xnparticleUpdateNdcClassification(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdateNdcClassificationFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+
+// add physical_description request
+function xnparticleAddPhysicalDescription(button){
+    var form = button.form;
+	if ( form.physical_descriptions_add.value != '' ){
+	    document.getElementsByName('xnparticleAddPhysicalDescriptionFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update physical_description request
+function xnparticleUpdatePhysicalDescription(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdatePhysicalDescriptionFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+
+// add lang request
+function xnparticleAddLang(button){
+    var form = button.form;
+	if ( form.langs_add.value != '' ){
+	    document.getElementsByName('xnparticleAddLangFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update lang request
+function xnparticleUpdateLang(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdateLangFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+
+// add id_issn request
+function xnparticleAddIdIssn(button){
+    var form = button.form;
+	if ( form.id_issns_add.value != '' ){
+	    document.getElementsByName('xnparticleAddIdIssnFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update id_issn request
+function xnparticleUpdateIdIssn(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdateIdIssnFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+
+// add id_isbn request
+function xnparticleAddIdIsbn(button){
+    var form = button.form;
+	if ( form.id_isbns_add.value != '' ){
+	    document.getElementsByName('xnparticleAddIdIsbnFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update id_isbn request
+function xnparticleUpdateIdIsbn(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdateIdIsbnFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+
+// add id_doi request
+function xnparticleAddIdDoi(button){
+    var form = button.form;
+	if ( form.id_dois_add.value != '' ){
+	    document.getElementsByName('xnparticleAddIdDoiFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update id_doi request
+function xnparticleUpdateIdDoi(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdateIdDoiFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+
+// add id_uri request
+function xnparticleAddIdUri(button){
+    var form = button.form;
+	if ( form.id_uris_add.value != '' ){
+	    document.getElementsByName('xnparticleAddIdUriFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update id_uri request
+function xnparticleUpdateIdUri(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdateIdUriFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+
+// add id_local request
+function xnparticleAddIdLocal(button){
+    var form = button.form;
+	if ( form.id_locals_add.value != '' ){
+	    document.getElementsByName('xnparticleAddIdLocalFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update id_local request
+function xnparticleUpdateIdLocal(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdateIdLocalFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+
+// add uri request
+function xnparticleAddUri(button){
+    var form = button.form;
+	if ( form.uris_add.value != '' ){
+	    document.getElementsByName('xnparticleAddUriFlag').item(0).value = '1';
+		getCheckedIndexes(form);
+		saveScrollPosition();
+	    form.action = '';
+	    form.submit();
+	}
+}
+
+// update uri request
+function xnparticleUpdateUri(button){
+    var form = button.form;
+    document.getElementsByName('xnparticleUpdateUriFlag').item(0).value = '1';
+	getCheckedIndexes(form);
+	saveScrollPosition();
+    form.action = '';
+    form.submit();
+}
+//-->
+</script>

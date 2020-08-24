@@ -1,0 +1,330 @@
+<{* xnparticle confirm block *}>
+<{* $Revision: 1.4 $ *}>
+<table class="outer">
+  <!-- Basic Information -->
+ <tr>
+  <td class="head"><{$basic.doi.name}></td>
+  <td class="<{cycle name="oddeven" values="odd,even"}>"><{$basic.doi.value}></td>
+ </tr>
+  <tr>
+    <td width="30%" class="head"><{$smarty.const._MD_XNPARTICLE_TITLE_LABEL}></td>
+    <td class="<{cycle name="oddeven" values="odd,even"}>" >
+	 <table>
+	  <tr><td width="70"><{$basic.title.name}></td><td>:&nbsp;<{$detail.title.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_KANA_LABEL}></td><td>:&nbsp;<{$detail.title_kana.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_ROMAJI_LABEL}></td><td>:&nbsp;<{$detail.title_romaji.value}></td></tr>
+	 </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_SUB_TITLE_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+    <td class="<{cycle name="oddeven"}>"><{$detail.sub_title_str.value|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($detail.sub_title_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_AUTHOR_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+    <td class="<{cycle name="oddeven"}>"><{$detail.author_str.value|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($detail.author_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_EDITION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>"><{$detail.edition.value}></td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_PUBLISH_PLACE_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>"><{$detail.publish_place.value}></td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_PUBLISHER_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.publisher.value}> (<{$detail.publisher_kana.value}>:<{$detail.publisher_romaji.value}>)</td>
+  </tr>
+  <tr>
+    <td width="30%" class="head"><{$smarty.const._MD_XNPARTICLE_DATE_LABEL}></td>
+    <td class="<{cycle name="oddeven" values="odd,even"}>" >
+	 <table>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_PUBLISH_YEAR_LABEL}></td><td>:&nbsp;<{$detail.year_f.value}>-<{$detail.year_t.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_CREATE_LABEL}></td><td>:&nbsp;<{$detail.date_create.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_UPDATE_LABEL}></td><td>:&nbsp;<{$detail.date_update.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_RECORD_LABEL}></td><td>:&nbsp;<{$detail.date_record.value}></td></tr>
+	 </table>
+    </td>
+  </tr>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_PHYSICAL_DESCRIPTIONS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$detail.physical_description_str.value|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($detail.physical_descriptions_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+  <tr>
+    <td width="30%" class="head"><{$smarty.const._MD_XNPARTICLE_JTITLE_LABEL}></td>
+    <td class="<{cycle name="oddeven" values="odd,even"}>" >
+	 <table>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_AUTHOR_NAME_LABEL}></td><td>:&nbsp;<{$detail.jtitle.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_TRANSLATION_LABEL}></td><td>:&nbsp;<{$detail.jtitle_translation.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_VOLUME_LABEL}></td><td>:&nbsp;<{$detail.jtitle_volume.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_ISSUE_LABEL}></td><td>:&nbsp;<{$detail.jtitle_issue.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_YEAR_LABEL}></td><td>:&nbsp;<{$detail.jtitle_year.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_MONTH_LABEL}></td><td>:&nbsp;<{$detail.jtitle_month.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_SPAGE_LABEL}></td><td>:&nbsp;<{$detail.jtitle_spage.value}></td></tr>
+	  <tr><td width="70"><{$smarty.const._MD_XNPARTICLE_JTITLE_EPAGE_LABEL}></td><td>:&nbsp;<{$detail.jtitle_epage.value}></td></tr>
+	 </table>
+    </td>
+  </tr>
+
+
+
+  <tr>
+    <td class="head" width="30%"><{$smarty.const._MD_XNPARTICLE_IDENTIFIER_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>">
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <td size="70"><{$smarty.const._MD_XNPARTICLE_ISSN_LABEL}></td>
+          <td><{$detail.id_issn_str.value}></td>
+        </tr>
+        <tr>
+          <td size="70"><{$smarty.const._MD_XNPARTICLE_ISBN_LABEL}></td>
+          <td><{$detail.id_isbn_str.value}></td>
+        </tr>
+        <tr>
+          <td size="70"><{$smarty.const._MD_XNPARTICLE_DOI_LABEL}></td>
+          <td><{$detail.id_doi_str.value}></td>
+        </tr>
+        <tr>
+          <td size="70"><{$smarty.const._MD_XNPARTICLE_URI_LABEL}></td>
+          <td><{$detail.id_uri_str.value}></td>
+        </tr>
+        <tr>
+          <td size="70"><{$smarty.const._MD_XNPARTICLE_SELF_DOI_LABEL}></td>
+          <td><{$detail.self_doi.value}></td>
+        </tr>
+        <tr>
+          <td size="70"><{$smarty.const._MD_XNPARTICLE_NAID_LABEL}></td>
+          <td><{$detail.naid.value}></td>
+        </tr>
+        <tr>
+          <td size="70"><{$smarty.const._MD_XNPARTICLE_ICHUSHI_LABEL}></td>
+          <td><{$detail.ichushi.value}></td>
+        </tr>
+        <tr>
+          <td size="70"><{$smarty.const._MD_XNPARTICLE_OTHER_LABEL}></td>
+          <td><{$detail.id_local_str.value}></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="30%" class="head"><{$smarty.const._MD_XNPARTICLE_DOCTORS_DEGREE_LABEL}></td>
+    <td class="<{cycle name="oddeven" values="odd,even"}>" >
+         <table>
+          <tr><td width="100"><{$smarty.const._MD_XNPARTICLE_GRANT_ID_LABEL}></td><td>:&nbsp;<{$detail.grant_id.value}></td></tr>
+          <tr><td width="100"><{$smarty.const._MD_XNPARTICLE_DATE_OF_GRANTED_LABEL}></td><td>:&nbsp;<{$detail.date_of_granted.value}></td></tr>
+          <tr><td width="100"><{$smarty.const._MD_XNPARTICLE_DEGREE_NAME_LABEL}></td><td>:&nbsp;<{$detail.degree_name.value}></td></tr>
+          <tr><td width="100"><{$smarty.const._MD_XNPARTICLE_GRANTOR_LABEL}></td><td>:&nbsp;<{$detail.grantor.value}></td></tr>
+         </table>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ABSTRACT_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.abstract.value|nl2br}></td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_TABLE_OF_CONTENTS_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.table_of_contents.value|nl2br}></td>
+  </tr>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_KEYWORDS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$detail.keyword_str.value|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($detail.keywords_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_NDC_CLASSIFICATIONS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$detail.ndc_classification_str.value|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($detail.ndc_classifications_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_DESCRIPTION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.description.value|nl2br}></td>
+  </tr>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_LANGS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$detail.lang_str.value|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($detail.langs_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_TYPE_OF_RESOURCE_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>"><{$detail.type_of_resource.value}></td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_GENRE_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.genre.value}></td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_TEXTVERSION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.textversion.value}></td>
+  </tr>
+
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ITEM_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>">
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <td>
+            <table><tr>
+              <td width="70"><{$smarty.const._MD_XNPARTICLE_IMAGES_LABEL}></td>
+              <td><{$article_images.value}></td>
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table><tr>
+              <td width="70"><{$smarty.const._MD_XNPARTICLE_ATTACHMENT_LABEL}></td>
+              <td><{$article_attachment.value}></td>
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <table><tr>
+              <td width="70"><{$smarty.const._MD_XNPARTICLE_URI_LABEL}></td>
+              <td><{$detail.uri_str.value}></td>
+            </tr></table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ACCESS_CONDITION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.access_condition.value|nl2br}></td>
+  </tr>
+<{if !empty( $basic.last_update_date.value ) }>
+  <tr>
+    <td class="head"><{$basic.last_update_date.name}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.last_update_date.value}></td>
+  </tr>
+<{/if}>
+<{if !empty( $basic.creation_date.value ) }>
+  <tr>
+    <td class="head"><{$basic.creation_date.name}></td>
+    <td class="<{cycle name="oddeven"}>"><{$basic.creation_date.value}></td>
+  </tr>
+<{/if}>
+<{if !empty( $basic.contributor.value ) }>
+  <tr>
+    <td class="head"><{$basic.contributor.name}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.contributor.value}></td>
+  </tr>
+<{/if}>
+<{if !empty( $basic.item_type.value ) }>
+  <tr>
+    <td class="head"><{$basic.item_type.name}></td>
+    <td class="<{cycle name="oddeven"}>"><{$basic.item_type.value}></td>
+  </tr>
+<{/if}>
+<{if !empty( $basic.change_log.value ) }>
+  <tr>
+    <td class="head"><{$basic.change_log.name}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.change_log.value}></td>
+  </tr>
+<{/if}>
+<{if !empty( $basic.change_logs.value ) }>
+  <tr>
+    <td class="head"><{$basic.change_logs.name}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.change_logs.value}></td>
+  </tr>
+<{/if}>
+  
+  <!-- Article Item Detail Information -->
+  <!-- index -->
+  <tr>
+    <td class="head"><{$index.name}></td>
+    <td class="<{cycle name="oddeven"}>"><{$index.value}></td>
+  </tr>
+  <!-- related_to -->
+  <tr>
+    <td class="head"><{$basic.related_to.name}></td>
+    <td class="<{cycle name="oddeven"}>"><{$basic.related_to.value}></td>
+  </tr>
+</table>
+<input type='hidden' name='title'                value='<{$detail.title.html_string}>' />
+<input type='hidden' name='title_kana'           value='<{$detail.title_kana.html_string}>' />
+<input type='hidden' name='title_romaji'         value='<{$detail.title_romaji.html_string}>' />
+<input type='hidden' name='sub_title_name'       value='<{$detail.sub_title_name.html_string}>' />
+<input type='hidden' name='sub_title_kana'       value='<{$detail.sub_title_kana.html_string}>' />
+<input type='hidden' name='sub_title_romaji'     value='<{$detail.sub_title_romaji.html_string}>' />
+<input type='hidden' name='author_id'            value='<{$detail.author_id.html_string}>' />
+<input type='hidden' name='author_name'          value='<{$detail.author_name.html_string}>' />
+<input type='hidden' name='author_kana'          value='<{$detail.author_kana.html_string}>' />
+<input type='hidden' name='author_romaji'        value='<{$detail.author_romaji.html_string}>' />
+<input type='hidden' name='author_affiliation'   value='<{$detail.author_affiliation.html_string}>' />
+<input type='hidden' name='author_affiliation_translation'   value='<{$detail.author_affiliation_translation.html_string}>' />
+<input type='hidden' name='author_role'   value='<{$detail.author_role.html_string}>' />
+<input type='hidden' name='author_link'   value='<{$detail.author_link.html_string}>' />
+<input type='hidden' name='edition'              value='<{$detail.edition.html_string}>' />
+<input type='hidden' name='publish_place'        value='<{$detail.publish_place.html_string}>' />
+<input type='hidden' name='publisher'            value='<{$detail.publisher.html_string}>' />
+<input type='hidden' name='publisher_kana'       value='<{$detail.publisher_kana.html_string}>' />
+<input type='hidden' name='publisher_romaji'     value='<{$detail.publisher_romaji.html_string}>' />
+<input type='hidden' name='year_f'               value='<{$detail.year_f.html_string}>' />
+<input type='hidden' name='year_t'               value='<{$detail.year_t.html_string}>' />
+<input type='hidden' name='date_create'          value='<{$detail.date_create.html_string}>' />
+<input type='hidden' name='date_update'          value='<{$detail.date_update.html_string}>' />
+<input type='hidden' name='date_record'          value='<{$detail.date_record.html_string}>' />
+<input type='hidden' name='jtitle'               value='<{$detail.jtitle.html_string}>' />
+<input type='hidden' name='jtitle_translation'   value='<{$detail.jtitle_translation.html_string}>' />
+<input type='hidden' name='jtitle_volume'        value='<{$detail.jtitle_volume.html_string}>' />
+<input type='hidden' name='jtitle_issue'         value='<{$detail.jtitle_issue.html_string}>' />
+<input type='hidden' name='jtitle_year'          value='<{$detail.jtitle_year.html_string}>' />
+<input type='hidden' name='jtitle_month'         value='<{$detail.jtitle_month.html_string}>' />
+<input type='hidden' name='jtitle_spage'         value='<{$detail.jtitle_spage.html_string}>' />
+<input type='hidden' name='jtitle_epage'         value='<{$detail.jtitle_epage.html_string}>' />
+<input type='hidden' name='id_issns'             value='<{$detail.id_issns.html_string}>' />
+<input type='hidden' name='id_isbns'             value='<{$detail.id_isbns.html_string}>' />
+<input type='hidden' name='id_dois'              value='<{$detail.id_dois.html_string}>' />
+<input type='hidden' name='id_uris'              value='<{$detail.id_uris.html_string}>' />
+<input type='hidden' name='self_doi'             value='<{$detail.self_doi.html_string}>' />
+<input type='hidden' name='naid'                 value='<{$detail.naid.html_string}>' />
+<input type='hidden' name='ichushi'              value='<{$detail.ichushi.html_string}>' />
+<input type='hidden' name='id_locals'            value='<{$detail.id_locals.html_string}>' />
+<input type='hidden' name='grant_id'             value='<{$detail.grant_id.html_string}>' />
+<input type='hidden' name='date_of_granted'      value='<{$detail.date_of_granted.html_string}>' />
+<input type='hidden' name='degree_name'          value='<{$detail.degree_name.html_string}>' />
+<input type='hidden' name='grantor'              value='<{$detail.grantor.html_string}>' />
+<input type='hidden' name='abstract'             value='<{$detail.abstract.html_string}>' />
+<input type='hidden' name='table_of_contents'    value='<{$detail.table_of_contents.html_string}>' />
+<input type='hidden' name='keywords'             value='<{$detail.keywords.html_string}>' />
+<input type='hidden' name='ndc_classifications'  value='<{$detail.ndc_classifications.html_string}>' />
+<input type='hidden' name='physical_descriptions' value='<{$detail.physical_descriptions.html_string}>' />
+<input type='hidden' name='langs'                value='<{$detail.langs.html_string}>' />
+<input type='hidden' name='type_of_resource'     value='<{$detail.type_of_resource.html_string}>' />
+<input type='hidden' name='genre'                value='<{$detail.genre.html_string}>' />
+<input type='hidden' name='textversion'                value='<{$detail.textversion.html_string}>' />
+<input type='hidden' name='uris'                  value='<{$detail.uris.html_string}>' />
+<input type='hidden' name='access_condition'     value='<{$detail.access_condition.html_string}>' />

@@ -1,0 +1,175 @@
+<metadata>
+<junii2 xmlns="http://irdb.nii.ac.jp/oai"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://irdb.nii.ac.jp/oai http://irdb.nii.ac.jp/oai/junii2-3_0.xsd">
+<{if !empty($detail.title)}>
+  <title><{$detail.title|xoonips_escape:'xml'}></title>
+<{/if}>
+<{if !empty($detail.titlte_kana)}>
+  <alternative><{$detail.title_kana|xoonips_escape:'xml'}></alternative>
+<{/if}>
+<{if !empty($detail.title_romaji)}>
+  <alternative><{$detail.title_romaji|xoonips_escape:'xml'}></alternative>
+<{/if}>
+<{foreach name='sub_titles' from=$sub_titles item='sub_title'}>
+<{if !empty($sub_title.sub_title_name) }>
+  <alternative><{$sub_title.sub_title_name|xoonips_escape:'xml'}></alternative>
+<{/if}>
+<{if !empty($sub_title.sub_title_kana) }>
+  <alternative><{$sub_title.sub_title_kana|xoonips_escape:'xml'}></alternative>
+<{/if}>
+<{if !empty($sub_title.sub_title_romaji) }>
+  <alternative><{$sub_title.sub_title_romaji|xoonips_escape:'xml'}></alternative>
+<{/if}>
+<{/foreach}>
+<{foreach name='creators' from=$creators item='creator'}>
+<{if !empty($creator.author_name) }>
+  <creator><{$creator.author_name|xoonips_escape:'xml'}></creator>
+<{/if}>
+<{/foreach}>
+<{foreach name='subjects' from=$subjects item='subject'}>
+<{if !empty($subject.keywords) }>
+  <subject><{$subject.keywords|xoonips_escape:'xml'}></subject>
+<{/if}>
+<{/foreach}>
+<{foreach name='ndcs' from=$ndcs item='ndc'}>
+<{if !empty($ndc.ndc_classifications) }>
+  <NDC><{$ndc.ndc_classifications|xoonips_escape:'xml'}></NDC>
+<{/if}>
+<{/foreach}>
+<{if !empty($basic.description)}>
+  <description><{$basic.description|xoonips_escape:'xml'}></description>
+<{/if}>
+<{if !empty($detail.table_of_contents)}>
+  <description><{$detail.table_of_contents|xoonips_escape:'xml'}></description>
+<{/if}>
+<{if !empty($detail.abstract)}>
+  <description><{$detail.abstract|xoonips_escape:'xml'}></description>
+<{/if}>
+<{if !empty($detail.publisher)}>
+  <publisher><{$detail.publisher|xoonips_escape:'xml'}></publisher>
+<{/if}>
+<{if !empty($detail.year_f) }>
+  <date><{$detail.year_f|xoonips_escape:'xml'}></date>
+<{elseif !empty($detail.year_t) }>
+  <date><{$detail.year_t|xoonips_escape:'xml'}></date>
+<{/if}>
+<{if !empty($detail.date_create)}>
+  <date><{$detail.date_create|xoonips_escape:'xml'}></date>
+<{/if}>
+<{if !empty($detail.date_update)}>
+  <date><{$detail.date_update|xoonips_escape:'xml'}></date>
+<{/if}>
+<{if !empty($detail.date_record)}>
+  <date><{$detail.date_record|xoonips_escape:'xml'}></date>
+<{/if}>
+<{if !empty($detail.type_of_resource)}>
+  <type><{$detail.type_of_resource|xoonips_escape:'xml'}></type>
+<{/if}>
+<{if !empty($nii_type)}>
+  <NIItype><{$nii_type|xoonips_escape:'xml'}></NIItype>
+<{/if}>
+<{foreach name='formats' from=$formats item='format'}>
+<{if !empty($format.physical_descriptions) }>
+  <format><{$format.physical_descriptions|xoonips_escape:'xml'}></format>
+<{/if}>
+<{/foreach}>
+<{foreach name='uris' from=$uris item='id_uri'}>
+<{if !empty($uri.id_uris) }>
+  <identifier><{$id_uri.id_uris|xoonips_escape:'xml'}></identifier>
+<{/if}>
+<{/foreach}>
+<{foreach name='locals' from=$locals item='local'}>
+<{if !empty($local.id_locals) }>
+  <identifier><{$local.id_locals|xoonips_escape:'xml'}></identifier>
+<{/if}>
+<{/foreach}>
+<{if !empty($uri)}>
+  <URI><{$uri|xoonips_escape:'xml'}></URI>
+<{/if}>
+<{if !empty($full_text_url)}>
+  <fullTextURL><{$full_text_url|xoonips_escape:'xml'}></fullTextURL>
+<{/if}>
+<{if !empty($ra)}>
+  <selfDOI ra="<{$ra|xoonips_escape:'xml'}>"><{$self_doi|xoonips_escape:'xml'}></selfDOI>
+<{/if}>
+<{foreach name='isbns' from=$isbns item='isbn'}>
+<{if !empty($isbn.id_isbns) }>
+  <isbn><{$isbn.id_isbns|xoonips_escape:'xml'}></isbn>
+<{/if}>
+<{/foreach}>
+<{foreach name='issns' from=$issns item='issn'}>
+<{if !empty($issn.id_issns) }>
+  <issn><{$issn.id_issns|xoonips_escape:'xml'}></issn>
+<{/if}>
+<{/foreach}>
+<{if !empty($detail.jtitle)}>
+  <jtitle><{$detail.jtitle|xoonips_escape:'xml'}></jtitle>
+<{/if}>
+<{if !empty($detail.jtitle_volume)}>
+  <volume><{$detail.jtitle_volume|xoonips_escape:'xml'}></volume>
+<{/if}>
+<{if !empty($detail.jtitle_issue)}>
+  <issue><{$detail.jtitle_issue|xoonips_escape:'xml'}></issue>
+<{/if}>
+<{if !empty($detail.jtitle_spage)}>
+  <spage><{$detail.jtitle_spage|xoonips_escape:'xml'}></spage>
+<{/if}>
+<{if !empty($detail.jtitle_epage)}>
+  <epage><{$detail.jtitle_epage|xoonips_escape:'xml'}></epage>
+<{/if}>
+<{if !empty($detail.jtitle_year) && !empty($detail.jtitle_month) }>
+  <dateofissued><{$detail.jtitle_year|xoonips_escape:'xml'}>-<{$detail.jtitle_month|xoonips_escape:'xml'}></dateofissued>
+<{elseif !empty($detail.jtitle_year) }>
+  <dateofissued><{$detail.jtitle_year|xoonips_escape:'xml'}></dateofissued>
+<{/if}>
+<{foreach name='languages' from=$languages item='language'}>
+<{if !empty($language.langs) }>
+  <language><{$language.langs|xoonips_escape:'xml'}></language>
+<{/if}>
+<{/foreach}>
+<{foreach name='creators' from=$creators item='creator'}>
+<{if !empty($creator.author_link) }>
+  <relation><{$creator.author_link|xoonips_escape:'xml'}></relation>
+<{/if}>
+<{/foreach}>
+<{foreach name='dois' from=$dois item='doi'}>
+<{if !empty($doi.id_dois) }>
+<{if $doi.id_dois_order > 0 }>
+  <relation><{$doi.id_dois|xoonips_escape:'xml'}></relation>
+<{/if}>
+<{/if}>
+<{/foreach}>
+<{foreach name='dois' from=$dois item='doi'}>
+<{if !empty($doi.id_dois) }>
+<{if $doi.id_dois_order == 0 }>
+  <doi><{$doi.id_dois|xoonips_escape:'xml'}></doi>
+<{/if}>
+<{/if}>
+<{/foreach}>
+<{if !empty($detail.naid)}>
+  <NAID><{$detail.naid|xoonips_escape:'xml'}></NAID>
+<{/if}>
+<{if !empty($detail.ichushi)}>
+  <ichushi><{$detail.ichushi|xoonips_escape:'xml'}></ichushi>
+<{/if}>
+<{if !empty($detail.access_condition)}>
+  <rights><{$detail.access_condition|xoonips_escape:'xml'}></rights>
+<{/if}>
+<{if !empty($textversion)}>
+  <textversion><{$textversion|xoonips_escape:'xml'}></textversion>
+<{/if}>
+<{if !empty($grant_id)}>
+  <grantid><{$grant_id|xoonips_escape:'xml'}></grantid>
+<{/if}>
+<{if !empty($date_of_granted)}>
+  <dateofgranted><{$date_of_granted|xoonips_escape:'xml'}></dateofgranted>
+<{/if}>
+<{if !empty($degree_name)}>
+  <degreename><{$degree_name|xoonips_escape:'xml'}></degreename>
+<{/if}>
+<{if !empty($grantor)}>
+  <grantor><{$grantor|xoonips_escape:'xml'}></grantor>
+<{/if}>
+</junii2>
+</metadata>

@@ -1,0 +1,365 @@
+<?xml version="1.0"?>
+
+<grammar xmlns="http://relaxng.org/ns/structure/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+  <include href="http://xoonips.sourceforge.jp/rng/basic.rng"/>
+
+  <include href="http://xoonips.sourceforge.jp/rng/link.rng"/>
+
+  <start>
+
+    <element name="item">
+
+      <ref name="basic"/>
+
+      <ref name="link"/>
+
+      <ref name="detail"/>
+
+    </element>
+
+  </start>
+
+
+  <include href="http://xoonips.sourceforge.jp/rng/file.rng"/>
+
+  <define name="detail">
+
+    <element name="detail" >
+
+      <attribute name="id">
+
+        <data type="integer"/>
+
+      </attribute>
+
+      <interleave>
+
+        <element name="title"> 
+          <data type="string"/>
+        </element>
+
+        <element name="title_kana"> 
+          <data type="string"/>
+        </element>
+
+        <element name="title_romaji"> 
+          <data type="string"/>
+        </element>
+
+        <element name="sub_title" >
+
+          <zeroOrMore>
+
+            <element name="sub_title_name"> 
+              <data type="string"/>
+            </element>
+
+            <element name="sub_title_kana"> 
+              <data type="string"/>
+            </element>
+
+            <element name="sub_title_romaji"> 
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="author" >
+
+          <zeroOrMore>
+
+            <element name="author_id"> 
+              <data type="string"/>
+            </element>
+
+            <element name="author_name"> 
+              <data type="string"/>
+            </element>
+
+            <element name="author_kana"> 
+              <data type="string"/>
+            </element>
+
+            <element name="author_romaji"> 
+              <data type="string"/>
+            </element>
+
+            <element name="author_affiliation"> 
+              <data type="string"/>
+            </element>
+
+            <element name="author_affiliation_translation"> 
+              <data type="string"/>
+            </element>
+
+            <element name="author_role"> 
+              <data type="string"/>
+            </element>
+
+            <element name="author_link"> 
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="edition">
+          <data type="string"/>
+        </element>
+
+        <element name="publish_place">
+          <data type="string"/>
+        </element>
+
+        <element name="publisher">
+          <data type="string"/>
+        </element>
+
+        <element name="publisher_kana">
+          <data type="string"/>
+        </element>
+
+        <element name="publisher_romaji">
+          <data type="string"/>
+        </element>
+
+        <element name="year_f">
+          <data type="string"/>
+        </element>
+
+        <element name="year_t">
+          <data type="string"/>
+        </element>
+
+        <element name="date_create">
+          <data type="string"/>
+        </element>
+
+        <element name="date_update">
+          <data type="string"/>
+        </element>
+
+        <element name="date_record">
+          <data type="string"/>
+        </element>
+
+        <element name="jtitle"> 
+          <data type="string"/>
+        </element>
+
+        <element name="jtitle_translation"> 
+          <data type="string"/>
+        </element>
+
+        <element name="jtitle_volume"> 
+          <data type="string"/>
+        </element>
+
+        <element name="jtitle_issue"> 
+          <data type="string"/>
+        </element>
+
+        <element name="jtitle_year"> 
+          <data type="string"/>
+        </element>
+
+        <element name="jtitle_month"> 
+          <data type="string"/>
+        </element>
+
+        <element name="jtitle_spage"> 
+          <data type="string"/>
+        </element>
+
+        <element name="jtitle_epage"> 
+          <data type="string"/>
+        </element>
+
+        <element name="abstract" >
+          <data type="string"/>
+        </element>
+
+        <element name="table_of_contents" >
+          <data type="string"/>
+        </element>
+
+        <element name="keywords" >
+
+          <zeroOrMore>
+
+            <element name="keyword" >
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="ndc_classifications" >
+
+          <zeroOrMore>
+
+            <element name="ndc_classification" >
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="physical_descriptions" >
+
+          <zeroOrMore>
+
+            <element name="physical_description" >
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="type_of_resource" >
+          <data type="string"/>
+        </element>
+
+        <element name="langs" >
+
+          <zeroOrMore>
+
+            <element name="lang" >
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="id_issns" >
+
+          <zeroOrMore>
+
+            <element name="id_issn" >
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="id_isbns" >
+
+          <zeroOrMore>
+
+            <element name="id_isbn" >
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="id_dois" >
+
+          <zeroOrMore>
+
+            <element name="id_doi" >
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="id_uris" >
+
+          <zeroOrMore>
+
+            <element name="id_uri" >
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="id_locals" >
+
+          <zeroOrMore>
+
+            <element name="id_local" >
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="uris" >
+
+          <zeroOrMore>
+
+            <element name="uri" >
+              <data type="string"/>
+            </element>
+
+          </zeroOrMore>
+
+        </element>
+
+        <element name="genre" >
+          <data type="string"/>
+        </element>
+
+        <element name="access_condition" >
+          <data type="string"/>
+        </element>
+
+        <optional>
+          <ref name="file"/>
+        </optional>
+
+        <element name="self_doi" >
+          <data type="string"/>
+        </element>
+
+        <element name="naid" >
+          <data type="string"/>
+        </element>
+
+        <element name="ichushi" >
+          <data type="string"/>
+        </element>
+
+        <element name="textversion" >
+          <data type="string"/>
+        </element>
+
+        <element name="grant_id" >
+          <data type="string"/>
+        </element>
+
+        <element name="date_of_granted" >
+          <data type="string"/>
+        </element>
+
+        <element name="degree_name" >
+          <data type="string"/>
+        </element>
+
+        <element name="grantor" >
+          <data type="string"/>
+        </element>
+    
+      </interleave>
+
+    </element>
+
+  </define>
+
+</grammar>

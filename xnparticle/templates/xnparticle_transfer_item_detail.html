@@ -1,0 +1,401 @@
+<{* $Revision: 1.2 $ *}>
+<table class="outer">
+  <!-- Basic Information -->
+<{include file="db:xoonips_transfer_detail_doi.html"}>
+<{include file="db:xoonips_transfer_detail_item_type.html"}>
+<{include file="db:xoonips_transfer_detail_update_date.html"}>
+<{include file="db:xoonips_transfer_detail_creation_date.html"}>
+<{include file="db:xoonips_transfer_detail_contributor.html"}>
+<{include file="db:xoonips_transfer_detail_changelogs.html"}>
+
+
+<{if strstr($xoonips_item.article_images.value,'src') || (!empty( $xoonips_item.article_attachment.value ) && !empty( $xoonips_item.show_pdf ))|| count($xoonips_item.detail.uri_raw_str)>0 }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ITEM_LABEL}></td>
+    <td>
+      <table cellspacing="0" cellpadding="0">
+      <{if strstr($xoonips_item.article_images.value,'src') }>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr>
+              <td width="70"><{$smarty.const._MD_XNPARTICLE_IMAGES_LABEL}></td>
+              <td><{$xoonips_item.article_images.value}></td>
+            </tr></table>
+          </td>
+         </tr>
+      <{/if}>
+      <{if !empty( $xoonips_item.article_attachment.value ) }>
+      <{if !empty( $xoonips_item.show_pdf ) }>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr>
+            <td width="70"><{$smarty.const._MD_XNPARTICLE_ATTACHMENT_LABEL}></td>
+            <td><{$xoonips_item.article_attachment.value}></td>
+            </tr></table>
+          </td>
+         </tr>
+      <{/if}>
+      <{else}>
+         <tr>
+           <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+             <table><tr>
+             <td width="70"><{$smarty.const._MD_XNPARTICLE_ATTACHMENT_LABEL}></td>
+             <td><{$smarty.const._MD_XNPARTICLE_DETAIL_NO_PDF_MESSAGE}></td>
+             </tr></table>
+           </td>
+         </tr>
+      <{/if}>
+      <{if count($xoonips_item.detail.uri_raw_str)>0 }>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr>
+            <td width="70"><{$smarty.const._MD_XNPARTICLE_URI_LABEL}></td>
+            <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+            <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+            <td class="<{cycle name="oddeven"}>">
+              <{foreach from=$xoonips_item.detail.uri_raw_str item="raw_uri"}>
+                <a href="<{$raw_uri}>"><{$raw_uri}></a><br>
+              <{/foreach}>
+              <{if ($xoonips_item.detail.uris_cnt.value == "0") }>
+              <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+              <{/if}>
+            </td></tr></table>
+          </td>
+        </tr>
+      <{/if}>
+    </table>
+    </td>
+  </tr>
+<{else}>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ITEM_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>">
+       <table><tr>
+         <td width="70"><{$smarty.const._MD_XNPARTICLE_ATTACHMENT_LABEL}></td>
+         <td><{$smarty.const._MD_XNPARTICLE_DETAIL_NO_PDF_MESSAGE}></td>
+       </tr></table>
+    </td>
+  </tr>
+<{/if}>
+
+  <tr>
+    <td width="30%" class="head"><{$smarty.const._MD_XNPARTICLE_TITLE_LABEL}></td>
+    <td class="<{cycle name="oddeven" values="odd,even"}>" >
+      <{$xoonips_item.detail.title|escape|replace:"&amp;#":"&#"}>
+    </td>
+  </tr>
+<{if !empty( $xoonips_item.detail.sub_title_str ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_SUB_TITLE_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+    <td class="<{cycle name="oddeven"}>"><{$xoonips_item.detail.sub_title_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($xoonips_item.detail.sub_title_cnt.value == "0") }>
+    <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.author_str ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_AUTHOR_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+    <td class="<{cycle name="oddeven"}>">
+        <{section name=row loop=$xoonips_item.detail.authors_raw_data}>
+          <table border='0' class="<{cycle name="oddeven"}>">
+            <tr><td colspan="2">
+              <{$xoonips_item.detail.authors_raw_data[row].author_name}>
+              <{if !empty($xoonips_item.detail.authors_raw_data[row].author_romaji) }>
+                (<{$xoonips_item.detail.authors_raw_data[row].author_romaji}>)
+              <{/if}>
+            </td></tr>
+            <{if !empty($xoonips_item.detail.authors_raw_data[row].author_affiliation) }>
+            <tr><td colspan="2">
+              <{$xoonips_item.detail.authors_raw_data[row].author_affiliation}>
+              <{if !empty($xoonips_item.detail.authors_raw_data[row].author_affiliation_translation) }>
+                (<{$xoonips_item.detail.authors_raw_data[row].author_affiliation_translation}>)
+              <{/if}>
+            </td></tr>
+            <{/if}>
+            <{if !empty($xoonips_item.detail.authors_raw_data[row].author_role) }>
+            <tr><td width="20%">[<{$smarty.const._MD_XNPARTICLE_AUTHOR_ROLE_LABEL}>]</td><td><{$xoonips_item.detail.authors_raw_data[row].author_role}></td></tr>
+            <{/if}>
+            <{if !empty($xoonips_item.detail.authors_raw_data[row].author_link) }>
+            <tr><td width="20%">[<{$smarty.const._MD_XNPARTICLE_AUTHOR_LINK_LABEL}>]</td><td><{$xoonips_item.detail.authors_raw_data[row].author_link}></td></tr>
+            <{/if}>
+          </table>
+        <{/section}>
+    </td>
+<{if ($xoonips_item.detail.author_cnt.value == "0") }>
+    <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.edition ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_EDITION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>"><{$xoonips_item.detail.edition|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.publish_place ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_PUBLISH_PLACE_LABEL}></td>
+
+
+    <td class="<{cycle name="oddeven"}>"><{$xoonips_item.detail.publish_place|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if (!empty( $xoonips_item.detail.publisher ) || !empty( $xoonips_item.detail.publisher_translation )) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_PUBLISHER_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.publisher|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if (!empty( $xoonips_item.detail.year_f ) || !empty( $xoonips_item.detail.year_t ) || !empty( $xoonips_item.detail.date_create ) || !empty( $xoonips_item.detail.date_update ) || !empty( $xoonips_item.detail.date_record ) )}>
+<tr>
+    <td class="head" width="30%"><{$smarty.const._MD_XNPARTICLE_DATE_LABEL}></td>
+    <td>
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr><td width="70"><{$smarty.const._MD_XNPARTICLE_PUBLISH_YEAR_LABEL}></td><td>:&nbsp;<{$xoonips_item.detail.year_f|escape|replace:"&amp;#":"&#"}>&nbsp;-&nbsp;<{$xoonips_item.detail.year_t|escape|replace:"&amp#":"&#"}></td></tr></table></td>
+        </tr>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr><td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_CREATE_LABEL}></td><td>:&nbsp;<{$xoonips_item.detail.date_create|escape|replace:"&amp;#":"&#"}></td></tr></table></td>
+        </tr>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr><td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_UPDATE_LABEL}></td><td>:&nbsp;<{$xoonips_item.detail.date_update|escape|replace:"&amp;#":"&#"}></td></tr></table></td>
+        </tr>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" >
+            <table><tr><td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_RECORD_LABEL}></td><td>:&nbsp;<{$xoonips_item.detail.date_record|escape|replace:"&amp;#":"&#"}></td></tr></table></td>
+        </tr>
+      </table>
+    </td>
+</tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.physical_description_str ) }>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_PHYSICAL_DESCRIPTIONS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$xoonips_item.detail.physical_description_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($xoonips_item.detail.physical_descriptions_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+<{if (!empty($xoonips_item.detail.jtitle) || !empty($xoonips_item.detail.jtitle_translation) || !empty($xoonips_item.detail.jtitle_volume) || !empty($xoonips_item.detail.jtitle_issue) || !empty($xoonips_item.detail.jtitle_year) || !empty($xoonips_item.detail.jtitle_month) || !empty($xoonips_item.detail.jtitle_spage) || !empty($xoonips_item.detail.jtitle_epage)  )}>
+<tr>
+    <td class="head" width="30%"><{$smarty.const._MD_XNPARTICLE_JTITLE_LABEL}></td>
+    <td>
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+
+          <td class="<{cycle name="oddeven"}>" >
+          <{if (!empty($xoonips_item.detail.jtitle))}>
+            <{$xoonips_item.detail.jtitle|escape|replace:"&amp;#":"&#"}>
+          <{/if}>
+          <{if (!empty($xoonips_item.detail.jtitle_translation))}>
+            (<{$xoonips_item.detail.jtitle_translation|escape|replace:"&amp;#":"&#"}>).
+          <{/if}>
+          <{if (!empty($xoonips_item.detail.jtitle_volume))}>
+            Vol.<{$xoonips_item.detail.jtitle_volume|escape|replace:"&amp;#":"&#"}>,
+          <{/if}>
+          <{if (!empty($xoonips_item.detail.jtitle_issue))}>
+            No.<{$xoonips_item.detail.jtitle_issue|escape|replace:"&amp;#":"&#"}>&nbsp;
+          <{/if}>
+          <{if (!empty($xoonips_item.detail.jtitle_year) || !empty($xoonips_item.detail.jtitle_month))}>
+            (<{$xoonips_item.detail.jtitle_year|escape|replace:"&amp;#":"&#"}>.
+            <{$xoonips_item.detail.jtitle_month|escape|replace:"&amp;#":"&#"}>)
+          <{/if}>
+          <{if (!empty($xoonips_item.detail.jtitle_spage)||!empty($xoonips_item.detail.jtitle_epage))}>
+
+            ,p.<{$xoonips_item.detail.jtitle_spage|escape|replace:"&amp;#":"&#"}>-
+
+            <{$xoonips_item.detail.jtitle_epage|escape|replace:"&amp;#":"&#"}>
+          <{/if}>
+          </td>
+        </tr>
+      </table>
+    </td>
+</tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.id_issn_str ) || !empty( $xoonips_item.detail.id_isbn_str ) || count($xoonips_item.detail.id_doi_raw_str)>0 || count($xoonips_item.detail.id_uri_raw_str)>0 || !empty( $xoonips_item.detail.self_doi ) || !empty( $xoonips_item.detail.naid ) || !empty( $xoonips_item.detail.ichushi ) || !empty( $xoonips_item.detail.id_local_str )}>
+<tr>
+  <td class="head" width="30%"><{$smarty.const._MD_XNPARTICLE_IDENTIFIER_LABEL}></td>
+  <td>
+    <table cellspacing="0" cellpadding="0">
+      <{if !empty( $xoonips_item.detail.id_issn_str ) }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_ISSN_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$xoonips_item.detail.id_issn_str|replace:"&amp;#":"&#"}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $xoonips_item.detail.id_isbn_str )}>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_ISBN_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$xoonips_item.detail.id_isbn_str|replace:"&amp;#":"&#"}></td>
+      </tr>
+      <{/if}>
+      <{if count($xoonips_item.detail.id_doi_raw_str)>0 }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_DOI_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+          <{foreach from=$xoonips_item.detail.id_doi_raw_str item="id_raw_doi"}>
+            <{$id_raw_doi}><br>
+          <{/foreach}>
+        </td>
+      </tr>
+      <{/if}>
+      <{if count($xoonips_item.detail.id_uri_raw_str)>0 }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_URI_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+          <{foreach from=$xoonips_item.detail.id_uri_raw_str item="id_raw_uri"}>
+            <a href="<{$id_raw_uri}>"><{$id_raw_uri}></a><br> 
+          <{/foreach}>
+        </td>
+      </tr>
+      <{/if}>
+      <{if !empty( $xoonips_item.detail.self_doi ) }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_SELF_DOI_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.self_doi|escape|replace:"&amp;#":"&#"}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $xoonips_item.detail.naid) }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_NAID_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.naid|escape|replace:"&amp;#":"&#"}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $xoonips_item.detail.ichushi ) }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_ICHUSHI_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.ichushi|escape|replace:"&amp;#":"&#"}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $xoonips_item.detail.id_local_str ) }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_OTHER_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.id_local_str|replace:"&amp;#":"&#"}></td>
+      </tr>
+      <{/if}>
+    </table>
+  </td>
+</tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.grant_id ) || !empty( $xoonips_item.detail.date_of_granted ) || !empty( $xoonips_item.detail.degree_name ) || !empty( $xoonips_item.detail.grantor ) }>
+<tr>
+  <td class="head" width="30%"><{$smarty.const._MD_XNPARTICLE_DOCTORS_DEGREE_LABEL}></td>
+  <td>
+    <table cellspacing="0" cellpadding="0">
+      <{if !empty( $xoonips_item.detail.grant_id ) }>
+      <tr>
+        <td width="120" class="<{cycle name="oddeven"}>" ><{$smarty.const._MD_XNPARTICLE_GRANT_ID_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.grant_id|escape|replace:"&amp;#":"&#"|nl2br}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $xoonips_item.detail.date_of_granted ) }>
+      <tr>
+        <td width="120" class="<{cycle name="oddeven"}>" ><{$smarty.const._MD_XNPARTICLE_DATE_OF_GRANTED_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.date_of_granted|escape|replace:"&amp;#":"&#"|nl2br}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $xoonips_item.detail.degree_name ) }>
+      <tr>
+        <td width="120" class="<{cycle name="oddeven"}>" ><{$smarty.const._MD_XNPARTICLE_DEGREE_NAME_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.degree_name|escape|replace:"&amp;#":"&#"|nl2br}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $xoonips_item.detail.grantor ) }>
+      <tr>
+        <td width="120" class="<{cycle name="oddeven"}>" ><{$smarty.const._MD_XNPARTICLE_GRANTOR_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.grantor|escape|replace:"&amp;#":"&#"|nl2br}></td>
+      </tr>
+      <{/if}>
+    </table>
+  </td>
+</tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.abstract ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ABSTRACT_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.abstract|escape|replace:"&amp;#":"&#"|nl2br}></td>
+  </tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.table_of_contents ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_TABLE_OF_CONTENTS_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.table_of_contents|escape|replace:"&amp;#":"&#"|nl2br}></td>
+  </tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.keyword_str ) }>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_KEYWORDS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$xoonips_item.detail.keyword_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($xoonips_item.detail.keywords_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.ndc_classification_str ) }>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_NDC_CLASSIFICATIONS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$xoonips_item.detail.ndc_classification_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($xoonips_item.detail.ndc_classifications_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+
+<{if !empty( $xoonips_item.detail.lang_str ) }>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_LANGS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$xoonips_item.detail.lang_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($xoonips_item.detail.langs_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.type_of_resource ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_TYPE_OF_RESOURCE_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>"><{$xoonips_item.detail.type_of_resource|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.genre ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_GENRE_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.genre|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.textversion ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_TEXTVERSION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.textversion|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if !empty( $xoonips_item.detail.access_condition ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ACCESS_CONDITION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$xoonips_item.detail.access_condition|escape|replace:"&amp;#":"&#"|nl2br}></td>
+  </tr>
+<{/if}>
+
+  
+  <!-- Article Item Detail Information -->
+  <!-- index -->
+<{include file="db:xoonips_transfer_detail_indexes.html"}>
+  <!-- related_to -->
+<{include file="db:xoonips_transfer_detail_related_tos.html"}>
+</table>

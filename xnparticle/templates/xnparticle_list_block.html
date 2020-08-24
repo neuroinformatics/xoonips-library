@@ -1,0 +1,28 @@
+<{* xnparticle list block *}>
+<{* $Revision: 1.13 $ *}>
+<table>
+ <tr>
+  <td width='65' style='vertical-align:middle; text-align:center;'>
+   <{if !empty( $article_images.value ) }>
+     <a href="<{$xoops_url}>/modules/xoonips/detail.php?<{if $item_basic.doi == '' || $smarty.const.XNP_CONFIG_DOI_FIELD_PARAM_NAME == ''}>item_id=<{$item_basic.item_id}><{else}><{$smarty.const.XNP_CONFIG_DOI_FIELD_PARAM_NAME}>=<{$doi}><{/if}>"><{$article_images.value}></a>
+
+   <{else}><img src="<{$smarty.const.XOOPS_URL}>/modules/xnparticle/images/icon_article.gif" alt="icon_article" />
+   <{/if}>
+  </td>
+  <td>
+    <a href="<{$xoops_url}>/modules/xoonips/detail.php?<{if $item_basic.doi == '' || $smarty.const.XNP_CONFIG_DOI_FIELD_PARAM_NAME == ''}>item_id=<{$item_basic.item_id}><{else}><{$smarty.const.XNP_CONFIG_DOI_FIELD_PARAM_NAME}>=<{$doi}><{/if}>"><{$item_detail.title_str|escape|replace:"&amp;#":"&#"}></a><br>
+    <{if $item_detail.author_str ne '' }><{$item_detail.author_str|escape|replace:"&amp;#":"&#"}><br /><{/if}>
+    <{if $item_detail.jtitle ne '' }><{$item_detail.jtitle|escape|replace:"&amp;#":"&#"}>.<{/if}><{if $item_detail.jtitle_volume ne '' }><{$item_detail.jtitle_volume|escape|replace:"&amp;#":"&#"}>,<{/if}><{if $item_detail.jtitle_issue ne '' }><{$item_detail.jtitle_issue|escape|replace:"&amp;#":"&#"}><{/if}><{if $item_detail.jtitle_year ne '' }>(<{$item_detail.jtitle_year|escape|replace:"&amp;#":"&#"}><{/if}><{if $item_detail.jtitle_month ne '' }>.<{$item_detail.jtitle_month|escape|replace:"&amp;#":"&#"}>)<{/if}><{if ($item_detail.jtitle_year ne '') && ($item_detail.jtitle_month eq '') }>)<{/if}><{if ($item_detail.jtitle_spage ne '') || ($item_detail.jtitle_epage ne '') }>,p.<{/if}><{if $item_detail.jtitle_spage ne '' }><{$item_detail.jtitle_spage|escape|replace:"&amp;#":"&#"}>-<{/if}><{if $item_detail.jtitle_epage ne '' }><{$item_detail.jtitle_epage|escape|replace:"&amp;#":"&#"}><{/if}>
+  </td>
+  <td width='65'>
+    <{if !empty($pending) && $pending}>(Pending)<{/if}>
+  </td>
+  <td width='65' style='vertical-align:middle;'>
+    <{if !empty( $article_attachment.value ) }>
+    <img src="<{$smarty.const.XOOPS_URL}>/modules/xnparticle/images/pdf_on.gif" alt="can read pdf file." />
+    <{else}>
+    <img src="<{$smarty.const.XOOPS_URL}>/modules/xnparticle/images/pdf_off.gif" alt="cannot read pdf file." />
+    <{/if}>
+  </td>
+ </tr>
+</table>

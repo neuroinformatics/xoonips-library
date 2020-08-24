@@ -1,0 +1,476 @@
+<{* xnparticle detail block *}>
+<{* $Revision: 1.12 $ *}>
+<table class="outer">
+  <!-- Basic Information -->
+ <{if !empty( $basic.doi.value ) }>
+ <tr>
+  <td class="head"><{$basic.doi.name}></td>
+  <td class="<{cycle name="oddeven" values="odd,even"}>"><{$basic.doi.value}></td>
+ </tr>
+ <{/if}>
+  <tr> 
+    <td class="head"><{$basic.item_type.name}></td> 
+    <td class="<{cycle name="oddeven" values="odd,even"}>"><{$basic.item_type.value}></td> 
+  </tr> 
+<{if strstr($article_images.value,'src') || (!empty( $article_attachment.value ) && !empty( $show_pdf ))|| count($detail.uri_raw_str)>0 }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ITEM_LABEL}></td>
+    <td>
+      <table cellspacing="0" cellpadding="0">
+      <{if strstr($article_images.value,'src') }>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr>
+              <td width="70"><{$smarty.const._MD_XNPARTICLE_IMAGES_LABEL}></td>
+              <td><{$article_images.value}></td>
+            </tr></table>
+          </td>
+         </tr>
+      <{/if}>
+      <{if !empty( $article_attachment.value ) }>
+      <{if !empty( $show_pdf ) }>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr>
+            <td width="70"><{$smarty.const._MD_XNPARTICLE_ATTACHMENT_LABEL}></td>
+            <td><{$article_attachment.value}></td>
+            </tr></table>
+          </td>
+         </tr>
+      <{/if}>
+      <{else}>
+         <tr>
+           <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+             <table><tr>
+             <td width="70"><{$smarty.const._MD_XNPARTICLE_ATTACHMENT_LABEL}></td>
+             <td><{$smarty.const._MD_XNPARTICLE_DETAIL_NO_PDF_MESSAGE}></td>
+             </tr></table>
+           </td>
+         </tr>
+      <{/if}>
+      <{if count($detail.uri_raw_str)>0 }>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr>
+            <td width="70"><{$smarty.const._MD_XNPARTICLE_URI_LABEL}></td>
+            <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+            <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+            <td class="<{cycle name="oddeven"}>">
+              <{foreach from=$detail.uri_raw_str item="raw_uri"}>
+                <a href="<{$raw_uri}>"><{$raw_uri}></a><br>
+              <{/foreach}>
+              <{if ($detail.uris_cnt.value == "0") }>
+              <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+              <{/if}>
+            </td></tr></table>
+          </td>
+        </tr>
+      <{/if}>
+    </table>
+    </td>
+  </tr>
+<{else}>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ITEM_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>">
+       <table><tr>
+         <td width="70"><{$smarty.const._MD_XNPARTICLE_ATTACHMENT_LABEL}></td>
+         <td><{$smarty.const._MD_XNPARTICLE_DETAIL_NO_PDF_MESSAGE}></td>
+       </tr></table>
+    </td>
+  </tr>
+<{/if}>
+  <tr>
+    <td width="30%" class="head"><{$smarty.const._MD_XNPARTICLE_TITLE_LABEL}></td>
+    <td class="<{cycle name="oddeven" values="odd,even"}>" >
+      <{$detail.title|escape|replace:"&amp;#":"&#"}>
+    </td>
+  </tr>
+<{if !empty( $detail.sub_title_str ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_SUB_TITLE_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+    <td class="<{cycle name="oddeven"}>"><{$detail.sub_title_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($detail.sub_title_cnt.value == "0") }>
+    <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+<{if !empty( $detail.author_str ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_AUTHOR_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+    <td class="<{cycle name="oddeven"}>">
+        <{section name=row loop=$detail.authors_raw_data}>
+          <table border='0' class="<{cycle name="oddeven"}>">
+            <tr><td colspan="2">
+              <{$detail.authors_raw_data[row].author_name}>
+              <{if !empty($detail.authors_raw_data[row].author_romaji) }>
+                (<{$detail.authors_raw_data[row].author_romaji}>)
+              <{/if}>
+            </td></tr>
+            <{if !empty($detail.authors_raw_data[row].author_affiliation) }>
+            <tr><td colspan="2">
+              <{$detail.authors_raw_data[row].author_affiliation}>
+              <{if !empty($detail.authors_raw_data[row].author_affiliation_translation) }>
+                (<{$detail.authors_raw_data[row].author_affiliation_translation}>)
+              <{/if}>
+            </td></tr>
+            <{/if}>
+            <{if !empty($detail.authors_raw_data[row].author_role) }>
+            <tr><td width="20%">[<{$smarty.const._MD_XNPARTICLE_AUTHOR_ROLE_LABEL}>]</td><td><{$detail.authors_raw_data[row].author_role}></td></tr>
+            <{/if}>
+            <{if !empty($detail.authors_raw_data[row].author_link) }>
+            <tr><td width="20%">[<{$smarty.const._MD_XNPARTICLE_AUTHOR_LINK_LABEL}>]</td><td><{$detail.authors_raw_data[row].author_link}></td></tr>
+            <{/if}>
+          </table>
+        <{/section}>
+    </td>
+<{if ($detail.author_cnt.value == "0") }>
+    <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+<{if !empty( $detail.edition ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_EDITION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>"><{$detail.edition|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if !empty( $detail.publish_place ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_PUBLISH_PLACE_LABEL}></td>
+
+
+    <td class="<{cycle name="oddeven"}>"><{$detail.publish_place|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if (!empty( $detail.publisher ) || !empty( $detail.publisher_translation )) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_PUBLISHER_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.publisher|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if (!empty( $detail.year_f ) || !empty( $detail.year_t ) || !empty( $detail.date_create ) || !empty( $detail.date_update ) || !empty( $detail.date_record ) )}>
+<tr>
+    <td class="head" width="30%"><{$smarty.const._MD_XNPARTICLE_DATE_LABEL}></td>
+    <td>
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr><td width="70"><{$smarty.const._MD_XNPARTICLE_PUBLISH_YEAR_LABEL}></td><td>:&nbsp;<{$detail.year_f|escape|replace:"&amp;#":"&#"}>&nbsp;-&nbsp;<{$detail.year_t|escape|replace:"&amp#":"&#"}></td></tr></table></td>
+        </tr>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr><td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_CREATE_LABEL}></td><td>:&nbsp;<{$detail.date_create|escape|replace:"&amp;#":"&#"}></td></tr></table></td>
+        </tr>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+            <table><tr><td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_UPDATE_LABEL}></td><td>:&nbsp;<{$detail.date_update|escape|replace:"&amp;#":"&#"}></td></tr></table></td>
+        </tr>
+        <tr>
+          <td class="<{cycle name="oddeven"}>" >
+            <table><tr><td width="70"><{$smarty.const._MD_XNPARTICLE_DATE_RECORD_LABEL}></td><td>:&nbsp;<{$detail.date_record|escape|replace:"&amp;#":"&#"}></td></tr></table></td>
+        </tr>
+      </table>
+    </td>
+</tr>
+<{/if}>
+<{if !empty( $detail.physical_description_str ) }>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_PHYSICAL_DESCRIPTIONS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$detail.physical_description_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($detail.physical_descriptions_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+<{if (!empty($detail.jtitle) || !empty($detail.jtitle_translation) || !empty($detail.jtitle_volume) || !empty($detail.jtitle_issue) || !empty($detail.jtitle_year) || !empty($detail.jtitle_month) || !empty($detail.jtitle_spage) || !empty($detail.jtitle_epage)  )}>
+<tr>
+    <td class="head" width="30%"><{$smarty.const._MD_XNPARTICLE_JTITLE_LABEL}></td>
+    <td>
+      <table cellspacing="0" cellpadding="0">
+        <tr>
+
+          <td class="<{cycle name="oddeven"}>" >
+          <{if (!empty($detail.jtitle))}>
+            <{$detail.jtitle|escape|replace:"&amp;#":"&#"}>
+          <{/if}>
+          <{if (!empty($detail.jtitle_translation))}>
+            (<{$detail.jtitle_translation|escape|replace:"&amp;#":"&#"}>).
+          <{/if}>
+          <{if (!empty($detail.jtitle_volume))}>
+            Vol.<{$detail.jtitle_volume|escape|replace:"&amp;#":"&#"}>,
+          <{/if}>
+          <{if (!empty($detail.jtitle_issue))}>
+            No.<{$detail.jtitle_issue|escape|replace:"&amp;#":"&#"}>&nbsp;
+          <{/if}>
+          <{if (!empty($detail.jtitle_year) || !empty($detail.jtitle_month))}>
+            (<{$detail.jtitle_year|escape|replace:"&amp;#":"&#"}>.
+            <{$detail.jtitle_month|escape|replace:"&amp;#":"&#"}>)
+          <{/if}>
+          <{if (!empty($detail.jtitle_spage)||!empty($detail.jtitle_epage))}>
+
+            ,p.<{$detail.jtitle_spage|escape|replace:"&amp;#":"&#"}>-
+
+            <{$detail.jtitle_epage|escape|replace:"&amp;#":"&#"}>
+          <{/if}>
+          </td>
+        </tr>
+      </table>
+    </td>
+</tr>
+<{/if}>
+<{if !empty( $detail.id_issn_str ) || !empty( $detail.id_isbn_str ) || count($detail.id_doi_raw_str)>0 || count($detail.id_uri_raw_str)>0 || !empty( $detail.id_local_str ) || !empty( $detail.self_doi ) || !empty( $detail.naid ) || !empty( $detail.ichushi ) }>
+<tr>
+  <td class="head" width="30%"><{$smarty.const._MD_XNPARTICLE_IDENTIFIER_LABEL}></td>
+  <td>
+    <table cellspacing="0" cellpadding="0">
+      <{if !empty( $detail.id_issn_str ) }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_ISSN_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$detail.id_issn_str|replace:"&amp;#":"&#"}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $detail.id_isbn_str )}>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_ISBN_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$detail.id_isbn_str|replace:"&amp;#":"&#"}></td>
+      </tr>
+      <{/if}>
+      <{if count($detail.id_doi_raw_str)>0 }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_DOI_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+          <{foreach from=$detail.id_doi_raw_str item="id_raw_doi"}>
+            <{$id_raw_doi}><br>
+          <{/foreach}>
+        </td>
+      </tr>
+      <{/if}>
+      <{if count($detail.id_uri_raw_str)>0 }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_URI_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>-->
+          <{foreach from=$detail.id_uri_raw_str item="id_raw_uri"}>
+            <a href="<{$id_raw_uri}>"><{$id_raw_uri}></a><br> 
+          <{/foreach}>
+        </td>
+      </tr>
+      <{/if}>
+      <{if !empty( $detail.self_doi ) }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_SELF_DOI_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$detail.self_doi|escape|replace:"&amp;#":"&#"|nl2br}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $detail.naid ) }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_NAID_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$detail.naid|escape|replace:"&amp;#":"&#"|nl2br}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $detail.ichushi ) }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_ICHUSHI_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$detail.ichushi|escape|replace:"&amp;#":"&#"|nl2br}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $detail.id_local_str ) }>
+      <tr>
+        <td width="70" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_OTHER_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$detail.id_local_str|replace:"&amp;#":"&#"}></td>
+      </tr>
+      <{/if}>
+    </table>
+  </td>
+</tr>
+<{/if}>
+<{if !empty( $detail.grant_id ) || !empty( $detail.date_of_granted ) || !empty( $detail.degree_name ) || !empty( $detail.grantor ) }> 
+<tr>
+  <td class="head" width="30%"><{$smarty.const._MD_XNPARTICLE_DOCTORS_DEGREE_LABEL}></td>
+  <td>
+    <table cellspacing="0" cellpadding="0">
+      <{if !empty( $detail.grant_id ) }>
+      <tr>
+        <td width="100" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_GRANT_ID_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$detail.grant_id|escape|replace:"&amp;#":"&#"|nl2br}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $detail.date_of_granted ) }>
+      <tr>
+        <td width="100" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_DATE_OF_GRANTED_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$detail.date_of_granted|escape|replace:"&amp;#":"&#"|nl2br}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $detail.degree_name ) }>
+      <tr>
+        <td width="100" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_DEGREE_NAME_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$detail.degree_name|escape|replace:"&amp;#":"&#"|nl2br}></td>
+      </tr>
+      <{/if}>
+      <{if !empty( $detail.grantor ) }>
+      <tr>
+        <td width="100" class="<{cycle name="oddeven"}>" ><!-- <{cycle name="oddeven"}>--><{$smarty.const._MD_XNPARTICLE_GRANTOR_LABEL}></td>
+        <td class="<{cycle name="oddeven"}>" ><{$detail.grantor|escape|replace:"&amp;#":"&#"|nl2br}></td>
+      </tr>
+      <{/if}>
+    </table>
+  </td>
+</tr>
+<{/if}>
+<{if !empty( $detail.abstract ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ABSTRACT_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.abstract|escape|replace:"&amp;#":"&#"|nl2br}></td>
+  </tr>
+<{/if}>
+<{if !empty( $detail.table_of_contents ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_TABLE_OF_CONTENTS_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.table_of_contents|escape|replace:"&amp;#":"&#"|nl2br}></td>
+  </tr>
+<{/if}>
+<{if !empty( $detail.keyword_str ) }>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_KEYWORDS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$detail.keyword_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($detail.keywords_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+<{if !empty( $detail.ndc_classification_str ) }>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_NDC_CLASSIFICATIONS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$detail.ndc_classification_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($detail.ndc_classifications_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+<{if !empty( $basic.description.value ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_DESCRIPTION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.description.value|nl2br}></td>
+  </tr>
+<{/if}>
+<{if !empty( $detail.lang_str ) }>
+  <tr>
+   <td class="head"><{$smarty.const._MD_XNPARTICLE_LANGS_LABEL}></td>
+    <{capture assign="cls0"}><{cycle name="oddeven"}><{/capture}>
+    <{capture assign="cls1"}><{cycle name="oddeven"}><{/capture}>
+	<td class="<{cycle name="oddeven"}>"><{$detail.lang_str|replace:"oddeven0":$cls0|replace:"oddeven1":$cls1}></td>
+<{if ($detail.langs_cnt.value == "0") }>
+     <{capture assign="cls"}><{cycle name="oddeven"}><{/capture}>
+<{/if}>
+  </tr>
+<{/if}>
+<{if !empty( $detail.type_of_resource ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_TYPE_OF_RESOURCE_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>"><{$detail.type_of_resource|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if !empty( $detail.genre ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_GENRE_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.genre|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if !empty( $detail.textversion ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_TEXTVERSION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.textversion|escape|replace:"&amp;#":"&#"}></td>
+  </tr>
+<{/if}>
+<{if !empty( $detail.access_condition ) }>
+  <tr>
+    <td class="head"><{$smarty.const._MD_XNPARTICLE_ACCESS_CONDITION_LABEL}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$detail.access_condition|escape|replace:"&amp;#":"&#"|nl2br}></td>
+  </tr>
+<{/if}>
+<{* invisible
+  <tr>
+    <td class="head"><{$basic.last_update_date.name}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.last_update_date.value}></td>
+  </tr>
+  <tr>
+    <td class="head"><{$basic.creation_date.name}></td>
+    <td class="<{cycle name="oddeven"}>"><{$basic.creation_date.value}></td>
+  </tr>
+  <tr>
+    <td class="head"><{$basic.contributor.name}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.contributor.value}></td>
+  </tr>
+  <tr>
+    <td class="head"><{$basic.change_logs.name}></td>
+    <td class="<{cycle name="oddeven"}>" ><{$basic.change_logs.value}></td>
+  </tr>
+*}>
+  
+  <!-- Article Item Detail Information -->
+  <!-- index -->
+  <tr>
+    <td class="head"><{$index.name}></td>
+    <td class="<{cycle name="oddeven"}>"><{$index.value}></td>
+  </tr>
+  <!-- related_to -->
+  <tr>
+    <td class="head"><{$basic.related_to.name}></td>
+    <td class="<{cycle name="oddeven"}>"><{$basic.related_to.value}></td>
+  </tr>
+</table>
+<{if $editable }>
+<form id='xoonips_edit_form' action='#'>
+<{$basic.hidden}>
+<input type="hidden" name="title" value="<{$detail.title|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="title_kana" value="<{$detail.title_kana|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="title_romaji" value="<{$detail.title_romaji|escape|replace:"&amp;#":"&#"}>" />
+<{if !empty( $hidden_str_for_repeatable ) }>
+<{$hidden_str_for_repeatable }>
+<{/if}>
+<input type="hidden" name="edition" value="<{$detail.edition|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="publish_place" value="<{$detail.publish_place|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="publisher" value="<{$detail.publisher|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="publisher_kana" value="<{$detail.publisher_kana|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="publisher_romaji" value="<{$detail.publisher_romaji|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="year_f" value="<{$detail.year_f|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="year_t" value="<{$detail.year_t|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="date_create" value="<{$detail.date_create|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="date_update" value="<{$detail.date_update|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="date_record" value="<{$detail.date_record|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="jtitle" value="<{$detail.jtitle|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="jtitle_translation" value="<{$detail.jtitle_translation|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="jtitle_volume" value="<{$detail.jtitle_volume|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="jtitle_issue" value="<{$detail.jtitle_issue|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="jtitle_year" value="<{$detail.jtitle_year|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="jtitle_month" value="<{$detail.jtitle_month|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="jtitle_spage" value="<{$detail.jtitle_spage|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="jtitle_epage" value="<{$detail.jtitle_epage|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="self_doi" value="<{$detail.self_doi|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="naid" value="<{$detail.naid|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="ichushi" value="<{$detail.ichushi|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="grant_id" value="<{$detail.grant_id|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="date_of_granted" value="<{$detail.date_of_granted|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="degree_name" value="<{$detail.degree_name|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="grantor" value="<{$detail.grantor|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="abstract" value="<{$detail.abstract|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="table_of_contents" value="<{$detail.table_of_contents|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="type_of_resource" value="<{$detail.type_of_resource|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="genre" value="<{$detail.genre|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="textversion" value="<{$detail.textversion|escape|replace:"&amp;#":"&#"}>" />
+<input type="hidden" name="access_condition" value="<{$detail.access_condition|escape|replace:"&amp;#":"&#"}>" />
+<{$article_images.hidden}>
+<{$article_attachment.hidden}>
+<{$index.hidden}>
+</form>
+<{/if}>

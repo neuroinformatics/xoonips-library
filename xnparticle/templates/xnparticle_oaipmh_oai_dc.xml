@@ -1,0 +1,179 @@
+<metadata>
+<oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+<{if !empty($detail.title)}>
+  <dc:title><{$detail.title|xoonips_escape:'xml'}></dc:title>
+<{/if}>
+<{if !empty($detail.titlte_kana)}>
+  <dc:title><{$detail.title_kana|xoonips_escape:'xml'}></dc:title>
+<{/if}>
+<{if !empty($detail.title_romaji)}>
+  <dc:title><{$detail.title_romaji|xoonips_escape:'xml'}></dc:title>
+<{/if}>
+<{foreach name='sub_titles' from=$sub_titles item='sub_title'}>
+<{if !empty($sub_title.sub_title_name) }>
+  <dc:title><{$sub_title.sub_title_name|xoonips_escape:'xml'}></dc:title>
+<{/if}>
+<{if !empty($sub_title.sub_title_kana) }>
+  <dc:title><{$sub_title.sub_title_kana|xoonips_escape:'xml'}></dc:title>
+<{/if}>
+<{if !empty($sub_title.sub_title_romaji) }>
+  <dc:title><{$sub_title.sub_title_romaji|xoonips_escape:'xml'}></dc:title>
+<{/if}>
+<{/foreach}>
+<{if !empty($detail.jtitle) && !empty($detail.jtitle_spage) }>
+  <dc:identifier><{$detail.jtitle|xoonips_escape:'xml'}> <{$detail.jtitle_translation|xoonips_escape:'xml'}> <{$detail.jtitle_volume|xoonips_escape:'xml'}> (<{$detail.jtitle_issue|xoonips_escape:'xml'}>), <{$detail.jtitle_spage|xoonips_escape:'xml'}>-<{$detail.jtitle_epage|xoonips_escape:'xml'}>. (<{$detail.jtitle_year|xoonips_escape:'xml'}>-<{$detail.jtitle_month|xoonips_escape:'xml'}>)</dc:identifier>
+<{elseif !empty($detail.jtitle) }>
+  <dc:identifier><{$detail.jtitle|xoonips_escape:'xml'}> <{$detail.jtitle_translation|xoonips_escape:'xml'}> <{$detail.jtitle_volume|xoonips_escape:'xml'}> (<{$detail.jtitle_issue|xoonips_escape:'xml'}>), (<{$detail.jtitle_year|xoonips_escape:'xml'}>-<{$detail.jtitle_month|xoonips_escape:'xml'}>)</dc:identifier>
+<{/if}>
+<{if !empty($detail.jtitle_year) && !empty($detail.jtitle_month) }>
+  <dc:date><{$detail.jtitle_year|xoonips_escape:'xml'}>-<{$detail.jtitle_month|xoonips_escape:'xml'}></dc:date>
+<{elseif !empty($detail.jtitle_year) }>
+  <dc:date><{$detail.jtitle_year|xoonips_escape:'xml'}></dc:date>
+<{/if}>
+<{foreach name='creators' from=$creators item='creator'}>
+<{if !empty($creator.author_name) }>
+  <dc:creator><{$creator.author_name|xoonips_escape:'xml'}></dc:creator>
+<{/if}>
+<{if !empty($creator.author_kana) }>
+  <dc:creator><{$creator.author_kana|xoonips_escape:'xml'}></dc:creator>
+<{/if}>
+<{if !empty($creator.author_romaji) }>
+  <dc:creator><{$creator.author_romaji|xoonips_escape:'xml'}></dc:creator>
+<{/if}>
+<{if !empty($creator.author_affiliation) }>
+  <dc:contributor><{$creator.author_affiliation|xoonips_escape:'xml'}></dc:contributor>
+<{/if}>
+<{if !empty($creator.author_affiliation_translation) }>
+  <dc:contributor><{$creator.author_affiliation_translation|xoonips_escape:'xml'}></dc:contributor>
+<{/if}>
+<{if !empty($creator.author_role) }>
+  <dc:description><{$creator.author_role|xoonips_escape:'xml'}></dc:description>
+<{/if}>
+<{if !empty($creator.author_link) }>
+  <dc:relation><{$creator.author_link|xoonips_escape:'xml'}></dc:relation>
+<{/if}>
+<{/foreach}>
+<{foreach name='subjects' from=$subjects item='subject'}>
+<{if !empty($subject.keywords) }>
+  <dc:subject><{$subject.keywords|xoonips_escape:'xml'}></dc:subject>
+<{/if}>
+<{/foreach}>
+<{foreach name='ndcs' from=$ndcs item='ndc'}>
+<{if !empty($ndc.ndc_classifications) }>
+  <dc:subject><{$ndc.ndc_classifications|xoonips_escape:'xml'}></dc:subject>
+<{/if}>
+<{/foreach}>
+<{if !empty($detail.publisher)}>
+  <dc:publisher><{$detail.publisher|xoonips_escape:'xml'}></dc:publisher>
+<{/if}>
+<{if !empty($detail.publisher_kana)}>
+  <dc:publisher><{$detail.publisher_kana|xoonips_escape:'xml'}></dc:publisher>
+<{/if}>
+<{if !empty($detail.publisher_romaji)}>
+  <dc:publisher><{$detail.publisher_romaji|xoonips_escape:'xml'}></dc:publisher>
+<{/if}>
+<{foreach name='languages' from=$languages item='language'}>
+<{if !empty($language.langs) }>
+  <dc:language><{$language.langs|xoonips_escape:'xml'}></dc:language>
+<{/if}>
+<{/foreach}>
+<{if !empty($detail.type_of_resource)}>
+  <dc:type><{$detail.type_of_resource|xoonips_escape:'xml'}></dc:type>
+<{/if}>
+<{if !empty($nii_type)}>
+  <dc:type><{$nii_type|xoonips_escape:'xml'}></dc:type>
+<{/if}>
+<{if !empty($detail.year_f) }>
+  <dc:date><{$detail.year_f|xoonips_escape:'xml'}></dc:date>
+<{elseif !empty($detail.year_t) }>
+  <dc:date><{$detail.year_t|xoonips_escape:'xml'}></dc:date>
+<{/if}>
+<{if !empty($detail.date_create)}>
+  <dc:date><{$detail.date_create|xoonips_escape:'xml'}></dc:date>
+<{/if}>
+<{if !empty($detail.date_update)}>
+  <dc:date><{$detail.date_update|xoonips_escape:'xml'}></dc:date>
+<{/if}>
+<{if !empty($detail.date_record)}>
+  <dc:date><{$detail.date_record|xoonips_escape:'xml'}></dc:date>
+<{/if}>
+<{if !empty($detail.edition)}>
+  <dc:description><{$detail.edition|xoonips_escape:'xml'}></dc:description>
+<{/if}>
+<{if !empty($detail.publish_place)}>
+  <dc:description><{$detail.publish_place|xoonips_escape:'xml'}></dc:description>
+<{/if}>
+<{if !empty($basic.description)}>
+  <dc:description><{$basic.description|xoonips_escape:'xml'}></dc:description>
+<{/if}>
+<{if !empty($detail.table_of_contents)}>
+  <dc:description><{$detail.table_of_contents|xoonips_escape:'xml'}></dc:description>
+<{/if}>
+<{if !empty($detail.abstract)}>
+  <dc:description><{$detail.abstract|xoonips_escape:'xml'}></dc:description>
+<{/if}>
+<{if !empty($uri)}>
+  <dc:identifier><{$uri|xoonips_escape:'xml'}></dc:identifier>
+<{/if}>
+<{if !empty($full_text_url)}>
+  <dc:identifier><{$full_text_url|xoonips_escape:'xml'}></dc:identifier>
+<{/if}>
+<{if !empty($ra)}>
+  <dc:identifier><{$self_doi|xoonips_escape:'xml'}></dc:identifier>
+<{/if}>
+<{foreach name='isbns' from=$isbns item='isbn'}>
+<{if !empty($isbn.id_isbns) }>
+  <dc:identifier><{$isbn.id_isbns|xoonips_escape:'xml'}></dc:identifier>
+<{/if}>
+<{/foreach}>
+<{foreach name='issns' from=$issns item='issn'}>
+<{if !empty($issn.id_issns) }>
+  <dc:identifier><{$issn.id_issns|xoonips_escape:'xml'}></dc:identifier>
+<{/if}>
+<{/foreach}>
+<{foreach name='uris' from=$uris item='uri'}>
+<{if !empty($uri.id_uris) }>
+  <dc:identifier><{$uri.id_uris|xoonips_escape:'xml'}></dc:identifier>
+<{/if}>
+<{/foreach}>
+<{foreach name='locals' from=$locals item='local'}>
+<{if !empty($local.id_locals) }>
+  <dc:identifier><{$local.id_locals|xoonips_escape:'xml'}></dc:identifier>
+<{/if}>
+<{/foreach}>
+<{foreach name='dois' from=$dois item='doi'}>
+<{if !empty($doi.id_dois) }>
+  <dc:relation><{$doi.id_dois|xoonips_escape:'xml'}></dc:relation>
+<{/if}>
+<{/foreach}>
+<{if !empty($detail.naid)}>
+  <dc:relation><{$detail.naid|xoonips_escape:'xml'}></dc:relation>
+<{/if}>
+<{if !empty($detail.ichushi)}>
+  <dc:relation><{$detail.ichushi|xoonips_escape:'xml'}></dc:relation>
+<{/if}>
+<{foreach name='formats' from=$formats item='format'}>
+<{if !empty($format.physical_descriptions) }>
+  <dc:format><{$format.physical_descriptions|xoonips_escape:'xml'}></dc:format>
+<{/if}>
+<{/foreach}>
+<{if !empty($detail.access_condition)}>
+  <dc:rights><{$detail.access_condition|xoonips_escape:'xml'}></dc:rights>
+<{/if}>
+<{if !empty($grant_id)}>
+  <dc:identifier><{$grant_id|xoonips_escape:'xml'}></dc:identifier>
+<{/if}>
+<{if !empty($date_of_granted)}>
+  <dc:date><{$date_of_granted|xoonips_escape:'xml'}></dc:date>
+<{/if}>
+<{if !empty($degree_name)}>
+  <dc:description><{$degree_name|xoonips_escape:'xml'}></dc:description>
+<{/if}>
+<{if !empty($grantor)}>
+  <dc:description><{$grantor|xoonips_escape:'xml'}></dc:description>
+<{/if}>
+</oai_dc:dc>
+</metadata>
