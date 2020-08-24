@@ -1,6 +1,4 @@
 #
-# $Revision: 1.01
-#
 # Table structure for table `xnparticle_item_detail`
 #
 

@@ -1,6 +1,5 @@
 <?php
 //  XooNIps article item type module
-//  $Revision: 1.6 $
 //  --------------------------------------------------------------------------
 //  XooNIps Library Module Xoops modules for XooNIps Platforms
 //  Copyright (C) 2006 Keio University and RIKEN, Japan. All rights reserved.

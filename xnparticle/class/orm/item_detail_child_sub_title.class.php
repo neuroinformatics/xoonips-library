@@ -1,5 +1,4 @@
 <?php
-// $Revision: 1.1 $
 // ------------------------------------------------------------------------- //
 //  XooNIps Library Module Xoops modules for XooNIps Platforms               //
 //  Copyright (C) 2006-2009 Keio University and RIKEN, Japan.                //
